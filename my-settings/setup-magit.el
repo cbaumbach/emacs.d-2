@@ -11,6 +11,11 @@
 (set-face-attribute 'magit-item-highlight nil :inherit nil)
 (set-face-attribute 'magit-diff-file-header nil :inherit nil)
 
+;; Improve readability of diff output.
+(set-face-foreground 'magit-diff-add "black")
+(set-face-foreground 'magit-diff-del "white")
+(set-face-foreground 'magit-diff-hunk-header "black")
+
 ;; Recenter screen after hiding details.
 (defun magit-show-level-2-all-recenter ()
   "Show only level 2 details and recenter screen."
