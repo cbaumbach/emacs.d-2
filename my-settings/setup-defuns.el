@@ -54,4 +54,12 @@ the regexps in PATTERNS."
        (or ,@(mapcar #'(lambda (x) `(string-match ,x s))
                      patterns)))))
 
+(defun what-face (pos)
+  "Show name of face under cursor."
+  (interactive "d")
+  (let ((face (or (get-char-property (point) 'read-face-name)
+                  (get-char-property (point) 'face))))
+    (cond (face (message "Face: %s" face))
+          (t (message "No face at %d" pos)))))
+
 (provide 'setup-defuns)
