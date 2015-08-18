@@ -13,11 +13,7 @@
      dired+
      ess
      expand-region
-     git-commit-mode
-     gitattributes-mode
-     gitconfig-mode
-     gitignore-mode
-     git-rebase-mode
+     git-commit
      haskell-mode
      magit
      multiple-cursors
@@ -47,7 +43,6 @@
 (require 'setup-ediff)
 (require 'setup-ess-mode)
 (require 'setup-expand-region-mode)
-(require 'setup-git-modes)
 (require 'setup-haskell-mode)
 (require 'setup-ido-mode)
 (require 'setup-magit)
