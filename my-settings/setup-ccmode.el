@@ -12,4 +12,12 @@
 (c-set-offset 'arglist-cont-nonempty '+)
 (c-set-offset 'arglist-close 0)
 
+(defun my-c-mode-common-hook ()
+  (c-toggle-electric-state 1)
+  (c-toggle-auto-newline 1)
+  (c-toggle-hungry-state 1)
+  (c-toggle-syntactic-indentation 1))
+
+(add-hook 'c-mode-common-hook #'my-c-mode-common-hook)
+
 (provide 'setup-ccmode)
