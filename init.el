@@ -38,6 +38,7 @@
 
 ;;; Setup modes.
 (require 'setup-ace-jump-mode)
+(require 'setup-ccmode)
 (require 'setup-dash)
 (require 'setup-dired-mode)
 (require 'setup-ediff)

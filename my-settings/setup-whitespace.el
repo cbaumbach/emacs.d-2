@@ -21,8 +21,4 @@
 ;;; Use two spaces after a colon.
 (setq colon-double-space t)
 
-;;; Harmonize tab settings.
-(defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'cperl-indent-level 'tab-width)
-
 (provide 'setup-whitespace)
