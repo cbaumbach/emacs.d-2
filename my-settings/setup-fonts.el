@@ -3,8 +3,8 @@
        (add-to-list 'initial-frame-alist '(font . "Consolas-12"))
        (add-to-list 'default-frame-alist '(font . "Consolas-12")))
       ((string-equal system-type "gnu/linux")
-       (add-to-list 'initial-frame-alist '(font . "-misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1"))
-       (add-to-list 'default-frame-alist '(font . "-misc-fixed-medium-r-normal--18-120-100-100-c-90-iso10646-1"))))
+       (add-to-list 'initial-frame-alist '(font . "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso10646-1"))
+       (add-to-list 'default-frame-alist '(font . "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso10646-1"))))
 
 ;;; Disable bold font.
 (mapc #'(lambda (face)
