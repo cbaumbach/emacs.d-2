@@ -24,15 +24,6 @@
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
 
-(defun leave-point-at-beginning-of-match ()
-  "Leave point at beginning of match when searching forward."
-  (unless isearch-mode-end-hook-quit
-    (when (and isearch-forward isearch-success)
-      (goto-char isearch-other-end))))
-
-(add-hook 'isearch-mode-end-hook
-          #'leave-point-at-beginning-of-match)
-
 ;;; Delete/overwrite active region.  As a side-effect this also
 ;;; activates transient-mark-mode which we don't want, so we
 ;;; deactivate it immediately afterwards.
