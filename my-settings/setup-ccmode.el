@@ -2,12 +2,14 @@
   '("k&r"
     (c-block-comment-prefix . "  ")
     (c-basic-offset . 4)
+    (c-backslash-max-column . 69)
     (c-hanging-braces-alist . ((block-close before)
                                (substatement-open after)))
     (c-hanging-semi&comma-criteria . (c-semi&comma-no-newlines-before-nonblanks
                                       c-semi&comma-inside-parenlist))
     (c-offsets-alist . ((arglist-cont-nonempty . +)
-                        (arglist-close . 0)))))
+                        (arglist-close . 0)
+                        (cpp-define-intro . 0)))))
 
 (c-add-style "personal" my-c-style)
 
