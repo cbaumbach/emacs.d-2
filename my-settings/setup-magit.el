@@ -6,7 +6,7 @@
 ;; Disable magit auto revert mode.
 (setq magit-auto-revert-mode nil)
 
-;;; Simplify magit diff face.
+;;; Simplify magit faces.
 (set-face-foreground 'magit-diff-added "blue")
 (set-face-background 'magit-diff-added "black")
 (set-face-foreground 'magit-diff-added-highlight "blue")
@@ -17,6 +17,8 @@
 (set-face-background 'magit-diff-removed-highlight "black")
 (set-face-foreground 'magit-diff-hunk-heading "green")
 (set-face-foreground 'magit-diff-hunk-heading-highlight "green")
+(set-face-foreground 'magit-section-highlight "yellow")
+(set-face-foreground 'magit-hash "green")
 
 ;; Recenter screen after hiding details.
 (defun magit-section-show-level-2-all-recenter ()
