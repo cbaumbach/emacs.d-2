@@ -62,4 +62,17 @@ the regexps in PATTERNS."
     (cond (face (message "Face: %s" face))
           (t (message "No face at %d" pos)))))
 
+(defun swap-buffers (&optional arg)
+  "Exchange buffers of current and next window.  With prefix
+argument exchange buffers of current and previous window."
+  (interactive "P")
+  (let* ((this-win (selected-window))
+         (find-other-window (if arg #'previous-window #'next-window))
+         (other-win (funcall find-other-window))
+         (this-buffer (window-buffer this-win))
+         (other-buffer (window-buffer other-win)))
+    (set-window-buffer other-win this-buffer)
+    (set-window-buffer this-win other-buffer))
+  (other-window (if arg -1 1)))
+
 (provide 'setup-defuns)
