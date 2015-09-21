@@ -5,7 +5,7 @@
 (when (or (string-equal system-type "darwin")
           (string-equal system-type "windows-nt"))
   (set-background-color "black")
-  (set-foreground-color "DarkSeaGreen2"))
+  (set-foreground-color "white"))
 
 ;;; Inhibit startup screen.
 (setq inhibit-startup-screen t)
