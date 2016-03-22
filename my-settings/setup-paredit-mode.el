@@ -22,11 +22,17 @@
                     (enable-paredit-mode)))))
 
 (eval-after-load "paredit"
-  '(define-key paredit-mode-map (kbd "DEL")
-     #'(lambda (&optional n)
-         (interactive "P")
-         (if (use-region-p)
-             (delete-region (region-beginning) (region-end))
-           (paredit-backward-delete (prefix-numeric-value n))))))
+  '(progn
+     (define-key paredit-mode-map (kbd "C-c C-s") 'paredit-forward-slurp-sexp)
+     (define-key paredit-mode-map (kbd "C-c C-b") 'paredit-forward-barf-sexp)
+     (define-key paredit-mode-map (kbd "C-c s") 'paredit-backward-slurp-sexp)
+     (define-key paredit-mode-map (kbd "C-c b") 'paredit-backward-barf-sexp)
+     (define-key paredit-mode-map (kbd "DEL") 'paredit-backward-delete-or-delete-region)))
+
+(defun paredit-backward-delete-or-delete-region (&optional n)
+  (interactive "P")
+  (if (use-region-p)
+      (delete-region (region-beginning) (region-end))
+    (paredit-backward-delete (prefix-numeric-value n))))
 
 (provide 'setup-paredit-mode)
