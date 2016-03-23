@@ -48,6 +48,7 @@
 (require 'setup-ido-mode)
 (require 'setup-magit)
 (require 'setup-multiple-cursors-mode)
+(require 'setup-org-mode)
 (require 'setup-paredit-mode)
 (require 'setup-proced-mode)
 (require 'setup-slime)
