@@ -12,7 +12,8 @@
      multiple-cursors
      paredit
      slime
-     undo-tree)))
+     undo-tree
+     yasnippet)))
 
 (condition-case nil
     (init--install-packages)
