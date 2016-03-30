@@ -2,9 +2,11 @@
 
 (setq ess-default-style 'C++)
 
-;;; Treat "$" like a space or "-" in R code.
-(add-hook 'ess-mode-hook
-          #'(lambda () (modify-syntax-entry ?$ "-")))
+;;; Treat $ like - from a syntax point of view.
+(add-hook 'ess-mode-hook #'(lambda () (modify-syntax-entry ?$ "-")))
+
+;;; Always use a SINGLE hash character for comments.
+(add-hook 'ess-mode-hook #'(lambda () (setq comment-add 0)))
 
 (setq ess-eval-visibly 'nowait)
 
