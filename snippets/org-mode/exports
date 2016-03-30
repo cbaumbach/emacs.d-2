@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: exports
+# key: e
+# --
+:exports $0
