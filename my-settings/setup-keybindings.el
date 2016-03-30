@@ -45,7 +45,7 @@
 (add-to-list 'mc/cmds-to-run-once 'repeatified-mc/unmark-next-like-this)
 
 (global-set-key (kbd "C-h n") 'repeatified-mc/mark-next-like-this)
-(global-set-key (kbd "C-h l") 'mc/edit-lines)
+(global-set-key (kbd "C-h C-l") 'mc/edit-lines)
 
 ;;; Add autoloads for some functions before binding keys to them.
 (autoload 'copy-from-above-command "misc" nil 'interactive)
