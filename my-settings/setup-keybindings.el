@@ -55,7 +55,9 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 (global-set-key (kbd "M-x") 'ido-M-x)
-(global-set-key (kbd "M-'") 'other-window)
+
+(repeatify-commands (other-window "o" 1))
+(global-set-key (kbd "C-x o") 'repeatified-other-window)
 
 ;;; Type M-= to expand, Meta - M-= to contract, M-0 M-= to reset.
 (global-set-key (kbd "M-=") 'er/expand-region)
