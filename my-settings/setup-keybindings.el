@@ -62,7 +62,7 @@
 ;;; Type M-= to expand, Meta - M-= to contract, M-0 M-= to reset.
 (global-set-key (kbd "M-=") 'er/expand-region)
 
-(global-set-key (kbd "M-,") 'ace-jump-mode)
+(global-set-key (kbd "C-c C-SPC") 'ace-jump-mode)
 (global-set-key (kbd "<f5>") 'slime-selector)
 (global-set-key (kbd "M-%") 'query-replace-regexp)
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer-list-other-window)
