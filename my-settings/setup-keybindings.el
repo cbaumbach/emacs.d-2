@@ -51,9 +51,6 @@
 (autoload 'copy-from-above-command "misc" nil 'interactive)
 (autoload 'zap-up-to-char "misc" nil 'interactive)
 
-;;; Use hippie-expand instead of dabbrev-expand.
-(global-set-key (kbd "M-/") 'hippie-expand)
-
 (global-set-key (kbd "M-x") 'ido-M-x)
 
 (repeatify-commands (other-window "o" 1))
