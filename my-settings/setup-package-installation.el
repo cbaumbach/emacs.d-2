@@ -8,6 +8,7 @@
      expand-region
      git-commit
      haskell-mode
+     htmlize
      magit
      multiple-cursors
      paredit
