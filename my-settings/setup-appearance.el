@@ -2,8 +2,7 @@
 (setq inhibit-default-init t)
 
 ;;; Explicitly set foreground and background colors in ms windows.
-(when (or (string-equal system-type "darwin")
-          (string-equal system-type "windows-nt"))
+(when (string-equal system-type "windows-nt")
   (set-background-color "black")
   (set-foreground-color "white"))
 
