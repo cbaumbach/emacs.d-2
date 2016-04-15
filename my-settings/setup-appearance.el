@@ -39,11 +39,6 @@
 ;;; Set text width to 70 columns.
 (setq fill-column 70)
 
-;;; Highlight current line in gray.
-(global-hl-line-mode 1)
-(set-face-background 'hl-line "#070707")
-(set-face-foreground 'highlight nil)
-
 ;;; Show column number.
 (setq-default column-number-mode t)
 
