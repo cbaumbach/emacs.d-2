@@ -26,19 +26,6 @@
 ;;; Use visual bell.
 (setq visible-bell t)
 
-;;; Make modeline of active window stand out more.
-(let ((faces (face-list)))
-  (cond ((member 'mode-line faces)
-         (set-face-foreground 'mode-line "black")
-         (set-face-background 'mode-line "DarkSeaGreen2")
-         (set-face-foreground 'mode-line-inactive "DarkSeaGreen2")
-         (set-face-background 'mode-line-inactive "black"))
-        ((member 'modeline faces)
-         (set-face-foreground 'modeline "black")
-         (set-face-background 'modeline "DarkSeaGreen2")
-         (set-face-foreground 'modeline-inactive "DarkSeaGreen2")
-         (set-face-background 'modeline-inactive "black"))))
-
 ;;; Turn on font lock mode globally.
 (global-font-lock-mode t)
 
