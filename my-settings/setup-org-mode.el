@@ -12,4 +12,6 @@
 ;;; Don't evaluate code blocks during export.
 (setq org-export-babel-evaluate nil)
 
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+
 (provide 'setup-org-mode)
