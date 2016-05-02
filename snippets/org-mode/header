@@ -2,4 +2,4 @@
 # name: header
 # key: h
 # --
-#+header: $0
+#+HEADER: $0
