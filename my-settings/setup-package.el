@@ -1,10 +1,10 @@
 (require 'package)
 
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 (package-initialize)
 
-(unless (file-exists-p "~/.emacs.d/elpa/archives/melpa")
+(unless (file-exists-p "~/.emacs.d/elpa/archives/melpa-stable")
   (package-refresh-contents))
 
 (defun packages-install (packages)

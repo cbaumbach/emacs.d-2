@@ -32,20 +32,6 @@
       (delete-region start end)
     (kill-region start end)))
 
-(defun beginning-of-dired-buffer ()
-  "Move to first file or directory in dired buffer skipping `.' and `..'."
-  (interactive)
-  (beginning-of-buffer)
-  (diredp-next-line 1)
-  (while (looking-at "[.][.]?$")
-    (diredp-next-line 1)))
-
-(defun end-of-dired-buffer ()
-  "Move to last file or directory in dired buffer."
-  (interactive)
-  (end-of-buffer)
-  (diredp-previous-line 1))
-
 (defmacro match-any (&rest patterns)
   "Make a predicate saying whether its argument matches any of
 the regexps in PATTERNS."

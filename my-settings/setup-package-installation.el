@@ -3,17 +3,14 @@
    '(ace-jump-mode
      dash
      dash-functional
-     dired+
      ess
      expand-region
      git-commit
      haskell-mode
-     htmlize
      magit
      multiple-cursors
      paredit
      slime
-     undo-tree
      yasnippet)))
 
 (condition-case nil

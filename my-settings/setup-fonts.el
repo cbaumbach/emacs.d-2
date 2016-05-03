@@ -14,8 +14,8 @@
 ;;; Make comments easily reabable.
 (set-face-foreground 'font-lock-comment-face "green")
 
-;;; Make directory line at the top readable in dired+.
-(set-face-background 'diredp-dir-heading "black")
-(set-face-foreground 'diredp-dir-heading "magenta")
+;; ;;; Make directory line at the top readable in dired+.
+;; (set-face-background 'diredp-dir-heading "black")
+;; (set-face-foreground 'diredp-dir-heading "magenta")
 
 (provide 'setup-fonts)
