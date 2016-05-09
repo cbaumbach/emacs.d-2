@@ -14,4 +14,11 @@
 
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
+;;; Don't ask the user for confirmation when evaluating R code.
+(setq org-confirm-babel-evaluate
+      #'(lambda (lang body)
+          (not (or
+                (string= lang "emacs-lisp")
+                (string= lang "R")))))
+
 (provide 'setup-org-mode)
