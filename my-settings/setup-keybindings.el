@@ -56,6 +56,9 @@
 (repeatify-commands (other-window "o" 1))
 (global-set-key (kbd "C-x o") 'repeatified-other-window)
 
+(repeatify-commands (other-frame "o" 1))
+(global-set-key (kbd "C-x 5 o") 'repeatified-other-frame)
+
 ;;; Type M-= to expand, Meta - M-= to contract, M-0 M-= to reset.
 (global-set-key (kbd "M-=") 'er/expand-region)
 
