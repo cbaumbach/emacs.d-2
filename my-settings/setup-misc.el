@@ -10,12 +10,14 @@
 ;;; Save bookmarks inside of .emacs.d.
 (setq bookmark-default-file "~/.emacs.d/bookmarks")
 
-;;; Delete/overwrite active region.  As a side-effect this also
-;;; activates transient-mark-mode which we don't want, so we
-;;; deactivate it immediately afterwards.
-(if (fboundp 'delete-selection-mode)
-    (delete-selection-mode 1))
-(transient-mark-mode -1)
+;;; Use transient-mark-mode.
+(transient-mark-mode 1)
+(make-variable-buffer-local 'transient-mark-mode)
+(put 'transient-mark-mode 'permanent-local t)
+(setq-default transient-mark-mode t)
+
+;;; Use delete-selection-mode.
+(delete-selection-mode 1)
 
 ;;; Increase length of message log.
 (setq message-log-max 1000)
