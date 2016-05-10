@@ -61,4 +61,20 @@ argument exchange buffers of current and previous window."
     (set-window-buffer this-win other-buffer))
   (other-window (if arg -1 1)))
 
+(defun beginning-of-dired-buffer ()
+  "Move to first file or directory in dired buffer skipping `.' and `..'."
+  (interactive)
+  (beginning-of-buffer)
+  (dired-next-line 1)                   ; step over directory path
+  (if (not (bound-and-true-p dired-hide-details-mode))
+      (dired-next-line 1))              ; step over "total used" line
+  (if (not (bound-and-true-p dired-omit-mode))
+      (dired-next-line 2)))             ; step over . and .. lines
+
+(defun end-of-dired-buffer ()
+  "Move to last file or directory in dired buffer."
+  (interactive)
+  (end-of-buffer)
+  (dired-previous-line 1))
+
 (provide 'setup-defuns)

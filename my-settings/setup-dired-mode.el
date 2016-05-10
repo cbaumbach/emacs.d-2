@@ -6,7 +6,9 @@
 (add-hook 'dired-mode-hook
           #'(lambda ()
               (dired-omit-mode 1)
-              (dired-hide-details-mode 1)))
+              (dired-hide-details-mode 1)
+              (local-set-key (kbd "M-<") 'beginning-of-dired-buffer)
+              (local-set-key (kbd "M->") 'end-of-dired-buffer)))
 
 (autoload 'dired-jump "dired-x"
   "Jump to Dired buffer corresponding to current buffer." t)
