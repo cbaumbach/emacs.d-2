@@ -19,4 +19,6 @@
 (define-key global-map "\C-x\C-j" 'dired-jump)
 (define-key global-map "\C-x4\C-j" 'dired-jump-other-window)
 
+(setq-default dired-listing-switches "-alh")
+
 (provide 'setup-dired-mode)
