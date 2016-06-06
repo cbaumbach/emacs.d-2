@@ -22,7 +22,7 @@
   (setq ess-offset-block 'prev-line)
   (setq ess-offset-continued 'straight)
   (setq ess-align-nested-calls '("ifelse"))
-  (setq ess-align-arguments-in-calls '("function[ 	]*("))
+  (setq ess-align-arguments-in-calls nil)
   (setq ess-align-continuations-in-calls '("[ 	]*(" "if[ 	]*(" "[^ 	]+\\["))
   (setq ess-align-blocks '(if-else))
   (setq ess-indent-prev-call-lhs nil)
