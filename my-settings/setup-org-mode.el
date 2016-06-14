@@ -14,10 +14,25 @@
 
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
-;;; Don't ask the user for confirmation when evaluating R code.
+(defun org-toggle-skip-confirm-babel-evaluate ()
+  "Toggle flag to bypass the need for confirmation when
+evaluating source blocks."
+  (interactive)
+  (setq org-skip-confirm-babel-evaluate
+        (not org-skip-confirm-babel-evaluate))
+  (message "%s for confirmation when evaluating source blocks"
+           (if org-skip-confirm-babel-evaluate
+               "Don't ask" "Ask")))
+
+(add-hook 'org-mode-hook
+          #'(lambda ()
+              (setq-local org-skip-confirm-babel-evaluate nil)
+              (local-set-key (kbd "C-c M-s") 'org-toggle-skip-confirm-babel-evaluate)))
+
 (setq org-confirm-babel-evaluate
       #'(lambda (lang body)
           (not (or
+                org-skip-confirm-babel-evaluate
                 (string= lang "emacs-lisp")
                 (string= lang "R")))))
 
