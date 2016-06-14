@@ -72,7 +72,7 @@
 (global-set-key (kbd "C-h C-SPC") 'copy-from-above-command)
 (global-set-key (kbd "M-z") 'zap-up-to-char)
 (global-set-key (kbd "C-h C-s") 'swap-buffers)
-(global-set-key (kbd "C-h C-f") 'insert-filename)
+(global-set-key (kbd "C-h C-f") 'insert-file-name)
 (define-key help-map "a" 'apropos)
 
 (provide 'setup-keybindings)
