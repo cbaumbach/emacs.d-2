@@ -77,4 +77,9 @@ argument exchange buffers of current and previous window."
   (end-of-buffer)
   (dired-previous-line 1))
 
+(defun insert-filename (filename)
+  "Prompt for a filename and insert it at point."
+  (interactive "GFilename: ")
+  (insert filename))
+
 (provide 'setup-defuns)
