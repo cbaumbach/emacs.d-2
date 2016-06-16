@@ -7,6 +7,9 @@
 ;;; No backup files, please.
 (setq make-backup-files nil)
 
+;;; Don't hide auto-save-list files.
+(setq auto-save-list-file-prefix "~/.emacs.d/auto-save-list/saves-")
+
 ;;; Save bookmarks inside of .emacs.d.
 (setq bookmark-default-file "~/.emacs.d/bookmarks")
 

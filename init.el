@@ -7,7 +7,6 @@
 (require 'setup-defuns)
 
 ;;; General setup.
-(require 'setup-auto-saving)
 (require 'setup-indentation)
 (require 'setup-misc)
 (require 'setup-scrolling)
