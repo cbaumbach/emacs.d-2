@@ -134,4 +134,11 @@
               (c-toggle-auto-newline 1)
               (c-toggle-hungry-state 1)))
 
+;;; Use // for comments in C code.
+(add-hook 'c-mode-hook
+          #'(lambda ()
+              (setq comment-start "//")
+              (setq comment-padding " ")
+              (setq comment-end "")))
+
 (provide 'setup-ccmode)
