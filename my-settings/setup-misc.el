@@ -53,4 +53,7 @@
 ;;; Cycle thru buffer-local mark ring with C-u [C-SPC]+.
 (setq set-mark-command-repeat-pop 1)
 
+;;; Comment out empty lines.
+(setq comment-empty-lines t)
+
 (provide 'setup-misc)
