@@ -31,4 +31,10 @@
 
 (add-hook 'ess-mode-hook #'ess-indent-k&r)
 
+;;; Disable font-lock-mode in inferior-ess-mode.
+(remove-hook 'inferior-ess-mode-hook #'turn-on-font-lock)
+(add-hook 'inferior-ess-mode-hook
+          #'(lambda ()
+              (font-lock-mode -1)))
+
 (provide 'setup-ess-mode)
