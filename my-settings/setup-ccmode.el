@@ -30,7 +30,7 @@
      (namespace-close before after)
      (namespace-open after)
      (statement-case-open after)
-     (substatement-open after))
+     (substatement-open . c-braces-no-newlines-before-nonblanks))
     (c-hanging-colons-alist
      (case-label after)
      (label after)
@@ -123,6 +123,15 @@
      (template-args-cont . +)
      (topmost-intro . 0)
      (topmost-intro-cont . 0))))
+
+(defun c-braces-no-newlines-before-nonblanks (syntax pos)
+  (save-excursion
+    (if (and (= (c-last-command-char) ?\{)
+             (zerop (forward-line 1))
+             (bolp)			; forward-line has funny behavior at eob.
+             (not (looking-at "^[ \t]*$")))
+        nil
+      '(after))))
 
 (c-add-style "personal" my-c-style)
 
