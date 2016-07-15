@@ -8,7 +8,7 @@
     (c-backslash-max-column . 999)
     (c-ignore-auto-fill string cpp code)
     (c-hanging-braces-alist
-     (block-close . c-snug-do-while)
+     (block-close before)
      (block-open after)
      (brace-entry-open)
      (brace-list-close before after)
