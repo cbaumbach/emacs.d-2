@@ -39,6 +39,7 @@
      (inher-intro))
     (c-hanging-semi&comma-criteria
      c-semi&comma-no-newlines-for-oneline-inliners
+     c-semi&comma-no-newlines-before-nonblanks
      c-semi&comma-inside-parenlist)
     (c-cleanup-list
      brace-else-brace
