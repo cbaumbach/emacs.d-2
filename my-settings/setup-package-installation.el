@@ -8,6 +8,7 @@
      git-commit
      haskell-mode
      magit
+     markdown-mode
      multiple-cursors
      paredit
      slime
