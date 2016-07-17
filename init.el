@@ -26,6 +26,7 @@
 (require 'setup-multiple-cursors-mode)
 (require 'setup-org-mode)
 (require 'setup-paredit-mode)
+(require 'setup-polymode)
 (require 'setup-proced-mode)
 (require 'setup-slime)
 (require 'setup-tex-modes)

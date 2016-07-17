@@ -11,6 +11,7 @@
      markdown-mode
      multiple-cursors
      paredit
+     polymode
      slime
      yasnippet)))
 
