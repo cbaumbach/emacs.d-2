@@ -30,6 +30,7 @@
 (require 'setup-proced-mode)
 (require 'setup-slime)
 (require 'setup-tex-modes)
+(require 'setup-undo-tree-mode)
 (require 'setup-yasnippet)
 
 ;;; Depends on other things being loaded.

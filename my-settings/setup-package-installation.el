@@ -13,6 +13,7 @@
      paredit
      polymode
      slime
+     undo-tree
      yasnippet)))
 
 (condition-case nil
