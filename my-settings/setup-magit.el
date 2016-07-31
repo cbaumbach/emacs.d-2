@@ -57,4 +57,9 @@
 
 (advice-add 'magit-section-show-level-2-all :after 'magit-recenter)
 
+(defun magit-move-buffer-line-to-top ()
+  (recenter-top-bottom 8))
+
+(advice-add 'magit-stage :after 'magit-move-buffer-line-to-top)
+
 (provide 'setup-magit)
