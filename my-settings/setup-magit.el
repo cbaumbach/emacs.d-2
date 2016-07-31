@@ -6,17 +6,20 @@
 ;; Disable magit auto revert mode.
 (setq magit-auto-revert-mode nil)
 
-;;; Simplify magit faces.
-(set-face-foreground 'magit-diff-removed-highlight "red")
-(set-face-background 'magit-diff-removed-highlight "black")
-(set-face-foreground 'magit-diff-removed "red")
-(set-face-background 'magit-diff-removed "black")
-(set-face-foreground 'magit-diff-added-highlight "green")
-(set-face-background 'magit-diff-added-highlight "black")
-(set-face-foreground 'magit-diff-added "green")
-(set-face-background 'magit-diff-added "black")
+;;; Current chunk.
+(set-face-foreground 'magit-diff-removed-highlight "brightred")
+(set-face-foreground 'magit-diff-added-highlight "brightgreen")
+(set-face-background 'magit-diff-removed-highlight "color-235")
+(set-face-background 'magit-diff-added-highlight "color-235")
 (set-face-background 'magit-diff-context-highlight "black")
 (set-face-foreground 'magit-section-highlight "yellow")
+
+;;; Other chunks.
+(set-face-foreground 'magit-diff-removed "brightred")
+(set-face-foreground 'magit-diff-added "brightgreen")
+(set-face-background 'magit-diff-removed "black")
+(set-face-background 'magit-diff-added "black")
+(set-face-background 'magit-diff-context "black")
 
 ;;; Recenter screen after hiding details.
 ;;;
