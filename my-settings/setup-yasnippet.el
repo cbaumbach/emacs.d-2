@@ -18,4 +18,9 @@
 (define-key yas-minor-mode-map (kbd "TAB") nil)
 (define-key yas-minor-mode-map (kbd "SPC") 'yas-expand)
 
+;;; Make sure x-y is only expanded if there is an x-y snippet.  In
+;;; particular, the presence of a y snippet should not cause
+;;; expansion.
+(setf yas-key-syntaxes (delete "w" yas-key-syntaxes))
+
 (provide 'setup-yasnippet)
