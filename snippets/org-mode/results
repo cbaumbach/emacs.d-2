@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name: results
-# key: r
+# key: :r
 # --
-results
+:results $0
