@@ -83,4 +83,9 @@ argument exchange buffers of current and previous window."
   (let (read-file-name-function read-file-name-default)
     (insert (read-file-name "File name: "))))
 
+(defun copy-1-from-above ()
+  "Copy next character from the previous nonblank line."
+  (interactive)
+  (copy-from-above-command 1))
+
 (provide 'setup-defuns)
