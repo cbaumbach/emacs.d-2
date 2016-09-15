@@ -12,6 +12,9 @@
 ;;; Don't evaluate code blocks during export.
 (setq org-export-babel-evaluate nil)
 
+;;; Use relative path names when inserting links.
+(setq org-link-file-path-type 'relative)
+
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
 (defun org-toggle-skip-confirm-babel-evaluate ()
