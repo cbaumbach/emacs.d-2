@@ -52,10 +52,7 @@
 ;;; optional argument, we have to wrap the latter in a lambda that
 ;;; takes no arguments.
 
-(defun magit-recenter ()
-  (recenter-top-bottom))
-
-(advice-add 'magit-section-show-level-2-all :after 'magit-recenter)
+(advice-add 'magit-section-show-level-2-all :after #'(lambda () (recenter-top-bottom)))
 (advice-add 'magit-stage :after #'(lambda (&optional ignored) (recenter-top-bottom 8)))
 
 (provide 'setup-magit)
