@@ -2,8 +2,7 @@
 (add-to-list 'load-path (concat user-emacs-directory "my-settings"))
 
 (require 'setup-appearance)
-(require 'setup-package)
-(require 'setup-package-installation)
+(require 'setup-packages)
 (require 'setup-defuns)
 
 ;;; General setup.
