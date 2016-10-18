@@ -2,7 +2,6 @@
 
 (defvar list-of-packages
   '((("gnu" . "http://elpa.gnu.org/packages/")
-     undo-tree
      yasnippet)
     (("melpa-stable" . "http://stable.melpa.org/packages/")
      ace-jump-mode
@@ -18,7 +17,8 @@
      slime)
     (("melpa" . "http://melpa.org/packages/")
      ess
-     polymode)))
+     polymode
+     undo-tree)))
 
 (defun install-custom-packages (archives-and-packages)
   (mapcar #'(lambda (pkgs)
