@@ -15,6 +15,42 @@
 ;;; Use relative path names when inserting links.
 (setq org-link-file-path-type 'relative)
 
+;;; Add dynamically expanding table of contents in upper right corner.
+(setq org-html-head "\
+<style type=\"text/css\">
+ <!--/*--><![CDATA[/*><!--*/
+  #table-of-contents {
+      font-size: 9pt;
+      position: fixed;
+      right: 0em;
+      top: 0em;
+      background: white;
+      text-align: right;
+      max-height: 80%;
+      overflow: auto;
+      z-index: 200;
+  }
+  #table-of-contents #text-table-of-contents {
+      display: none;
+      text-align: left;
+  }
+  #table-of-contents:hover #text-table-of-contents {
+      display: block;
+      padding: 0.5em;
+      margin-top: -1.5em;
+  }
+  @media screen
+  {
+    #table-of-contents {
+      float: right;
+      border: 1px solid #CCC;
+      max-width: 50%;
+      overflow: auto;
+    }
+  } /* END OF @media screen */
+ /*]]>*/-->
+</style>")
+
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
 ;;; Functions for using top-level trees as slides.
