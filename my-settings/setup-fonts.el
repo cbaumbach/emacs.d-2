@@ -1,10 +1,6 @@
-;;; Choose fonts.
-(cond ((string-equal system-type "windows-nt")
-       (add-to-list 'initial-frame-alist '(font . "Consolas-14"))
-       (add-to-list 'default-frame-alist '(font . "Consolas-14")))
-      ((string-equal system-type "gnu/linux")
-       (add-to-list 'initial-frame-alist '(font . "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso10646-1"))
-       (add-to-list 'default-frame-alist '(font . "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso10646-1"))))
+(when (member "Unifont" (font-family-list))
+  (add-to-list 'initial-frame-alist '(font . "Unifont-12"))
+  (add-to-list 'default-frame-alist '(font . "Unifont-12")))
 
 ;;; Disable bold font.
 (mapc #'(lambda (face)
