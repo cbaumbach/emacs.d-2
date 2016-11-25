@@ -74,6 +74,8 @@
 (global-set-key (kbd "M-z") 'zap-up-to-char)
 (global-set-key (kbd "C-h C-s") 'swap-buffers)
 (global-set-key (kbd "C-h C-f") 'insert-file-name)
+(global-set-key (kbd "C-x C-r") 'view-file)
+(global-set-key (kbd "C-x 4 r") 'view-file-other-window)
 (define-key help-map "a" 'apropos)
 
 (provide 'setup-keybindings)
