@@ -5,6 +5,9 @@
 ;;; Add directory with setup files to load-path.
 (add-to-list 'load-path (concat user-emacs-directory "my-settings"))
 
+;;; Prevent Custom from writing to this file.
+(setq custom-file (concat user-emacs-directory "custom.el"))
+
 (require 'setup-appearance)
 (require 'setup-packages)
 (require 'setup-defuns)
