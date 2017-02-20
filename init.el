@@ -1,3 +1,7 @@
+;;; The next line is automatically added by package.el.  Leave it to
+;;; satisfy package.el but turn it into a comment to disable it.
+;;; (package-initialize)
+
 ;;; Add directory with setup files to load-path.
 (add-to-list 'load-path (concat user-emacs-directory "my-settings"))
 
