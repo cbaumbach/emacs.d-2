@@ -35,6 +35,7 @@
 (require 'setup-paredit-mode)
 (require 'setup-polymode)
 (require 'setup-proced-mode)
+(require 'setup-python-mode)
 (require 'setup-slime)
 (require 'setup-tex-modes)
 (require 'setup-undo-tree-mode)
