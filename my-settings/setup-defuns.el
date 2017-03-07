@@ -88,8 +88,13 @@ argument exchange buffers of current and previous window."
   (interactive)
   (copy-from-above-command 1))
 
-(defun cb/inside-a-string-p ()
-  "Returns non-nil if point is inside a string, otherwise nil."
-  (nth 3 (syntax-ppss)))
+(defun cb/inside-a-multiline-string-p ()
+  "Returns non-nil if point is inside a multiline string, otherwise nil."
+  (let ((state (syntax-ppss)))
+    (and (nth 3 state)      ; inside a string
+         (< (nth 8 state)   ; start of string lies before current line
+            (save-excursion
+              (beginning-of-line)
+              (point))))))
 
 (provide 'setup-defuns)
