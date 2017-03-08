@@ -4,10 +4,12 @@
 
 (defun cb/delete-backward-4-spaces-in-string ()
   (interactive)
-  (if (looking-back "    ")
-      (let ((start-of-string (nth 8 (syntax-ppss))))
-        (delete-char (- (min 4 (- (point) start-of-string 1)))))
-    (delete-char -1)))
+  (cond ((region-active-p)
+         (delete-backward-char 1))
+        ((looking-back "    ")
+         (let ((start-of-string (nth 8 (syntax-ppss))))
+           (delete-char (- (min 4 (- (point) start-of-string 1))))))
+        (t (delete-char -1))))
 
 (defun cb/newline-and-indent-to-first-nonblank ()
   (interactive)
