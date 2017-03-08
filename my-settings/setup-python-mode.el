@@ -26,7 +26,7 @@
                                        #'cb/delete-backward-4-spaces-in-string))
               (cb/define-context-key python-mode-map
                                      (kbd "RET")
-                                     (when (cb/inside-a-multiline-string-p)
+                                     (when (cb/inside-a-string-p)
                                        #'cb/newline-and-indent-to-first-nonblank))))
 
 (provide 'setup-python-mode)
