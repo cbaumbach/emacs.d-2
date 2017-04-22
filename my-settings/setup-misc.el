@@ -56,4 +56,7 @@
 ;;; Comment out empty lines.
 (setq comment-empty-lines t)
 
+;;; Default input method
+(setq default-input-method 'german-postfix)
+
 (provide 'setup-misc)
