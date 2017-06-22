@@ -13,6 +13,7 @@
 (require 'setup-defuns)
 
 ;;; General setup.
+(require 'setup-ack)
 (require 'setup-cheat-sheet)
 (require 'setup-indentation)
 (require 'setup-misc)
