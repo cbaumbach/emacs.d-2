@@ -1,23 +1,16 @@
-;; -*- lexical-binding: t -*-
-
 (defvar list-of-packages
-  '((("gnu" . "http://elpa.gnu.org/packages/")
-     yasnippet)
+  '((("gnu" . "http://elpa.gnu.org/packages/"))
     (("melpa-stable" . "http://stable.melpa.org/packages/")
      ace-jump-mode
      dash
      dash-functional
      expand-region
      git-commit
-     haskell-mode
      magit
-     markdown-mode
      multiple-cursors
-     paredit
-     slime)
+     paredit)
     (("melpa" . "http://melpa.org/packages/")
-     ess
-     polymode
+     ;; ess
      undo-tree)))
 
 (defun install-custom-packages (archives-and-packages)
@@ -27,7 +20,9 @@
   (delete-other-windows))
 
 (defun install-packages-from-archive (packages archive)
-  (let ((packages-to-install (filter (complement #'package-installed-p) packages)))
+  (let ((packages-to-install (filter (lambda (package)
+                                       (not (package-installed-p package)))
+                                     packages)))
     (when packages-to-install
       (delete-package-archives)
       (setq package-archives (list archive))
@@ -41,10 +36,6 @@
       (when (funcall predicate element)
         (setq result (add-to-list 'result element))))
     result))
-
-(defun complement (f)
-  (lambda (&rest args)
-    (not (apply f args))))
 
 (defun delete-package-archives ()
   (let ((archive-directory (concat user-emacs-directory "elpa/archives")))
