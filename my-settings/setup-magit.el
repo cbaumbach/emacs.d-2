@@ -55,4 +55,9 @@
 (advice-add 'magit-section-show-level-2-all :after #'(lambda () (recenter-top-bottom)))
 (advice-add 'magit-stage :after #'(lambda (&optional ignored) (recenter-top-bottom 8)))
 
+(defun magit-set-private-key-file (private-key-file)
+  "Set private key file for accessing git repos via ssh."
+  (interactive "fFile: ")
+  (setenv "GIT_SSH_COMMAND" (concat "ssh -i " private-key-file)))
+
 (provide 'setup-magit)
