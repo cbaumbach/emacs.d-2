@@ -100,6 +100,7 @@ Example:
 (global-set-key (kbd "C-h C-f") 'insert-file-name)
 (global-set-key (kbd "C-x C-r") 'view-file)
 (global-set-key (kbd "C-x 4 r") 'view-file-other-window)
+(global-set-key (kbd "<f9>") 'recompile)
 (define-key help-map "a" 'apropos)
 
 (provide 'setup-keybindings)
