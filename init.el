@@ -28,6 +28,7 @@
 (require 'setup-ediff)
 ;; (require 'setup-ess-mode)
 (require 'setup-expand-region-mode)
+(require 'setup-html-mode)
 (require 'setup-ido-mode)
 (require 'setup-magit)
 (require 'setup-multiple-cursors-mode)
