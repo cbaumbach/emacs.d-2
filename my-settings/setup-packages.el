@@ -6,6 +6,7 @@
      dash-functional
      expand-region
      git-commit
+     haskell-mode
      magit
      multiple-cursors
      paredit)
