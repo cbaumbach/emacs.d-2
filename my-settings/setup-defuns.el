@@ -8,6 +8,19 @@
     (error (message "Invalid expression.")
        (insert (current-kill 0)))))
 
+(autoload 'zap-up-to-char "misc" nil 'interactive)
+
+(defun zap-to-or-up-to-char (arg char)
+  "Without prefix arg delete up to CHAR, otherwise delete up to
+and including CHAR."
+  (interactive
+   (list current-prefix-arg
+         (read-char (propertize (if current-prefix-arg
+                                    "Zap to char: "
+                                  "Zap up to char: ")
+                                'face '(:foreground "cyan")))))
+  (funcall (if arg #'zap-to-char #'zap-up-to-char) 1 char))
+
 (defun switch-to-buffer-list-other-window ()
   "Switch to buffer list in other window."
   (interactive)
