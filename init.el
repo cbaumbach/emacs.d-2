@@ -33,6 +33,7 @@
 (require 'setup-haskell-mode)
 (require 'setup-html-mode)
 (require 'setup-ido-mode)
+(require 'setup-lisp-mode)
 (require 'setup-magit)
 (require 'setup-multiple-cursors-mode)
 (require 'setup-org-mode)
