@@ -37,12 +37,17 @@ Example:
                  :filter ,(lambda (&optional ignored)
                             ,dispatch))))
 
-(defmacro repeatify-commands (&rest args)
-  "Create a set of inter-communicating repeatable commands."
+(defmacro repeatify-commands (&rest forms)
+  "Create a set of inter-communicating repeatable commands.
+
+Every form in FORMS has the following structure: (fn key [arg])
+where KEY, specified as a string, will be bound to the function
+FN.  If ARG is supplied, it will be passed as an additional
+argument to FN."
   (let ((binds (mapcar #'(lambda (x)
                            (cons (intern (concat "repeatified-" (symbol-name (car x))))
                                  x))
-                       args)))
+                       forms)))
     (let ((keydefs (mapcar #'(lambda (x)
                                `(define-key map (kbd ,(nth 2 x)) ',(nth 0 x)))
                            binds)))
