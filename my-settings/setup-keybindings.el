@@ -59,16 +59,18 @@ Example:
                              map))))
                    binds)))))
 
-;;; multiple-cursors
-(repeatify-commands (mc/mark-next-like-this "n" 1)
-                    (mc/skip-to-next-like-this "N")
-                    (mc/unmark-next-like-this "u"))
+(defun cb/mc/mark-next-like-this ()
+  (interactive)
+  (mc/mark-next-like-this 1)
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "n") #'cb/mc/mark-next-like-this)
+    (define-key map (kbd "s") #'mc/skip-to-next-like-this)
+    (define-key map (kbd "u") #'mc/unmark-next-like-this)
+    (set-transient-map map t)))
 
-(add-to-list 'mc/cmds-to-run-once 'repeatified-mc/mark-next-like-this)
-(add-to-list 'mc/cmds-to-run-once 'repeatified-mc/skip-to-next-like-this)
-(add-to-list 'mc/cmds-to-run-once 'repeatified-mc/unmark-next-like-this)
+(add-to-list 'mc/cmds-to-run-once 'cb/mc/mark-next-like-this)
 
-(global-set-key (kbd "C-h n") 'repeatified-mc/mark-next-like-this)
+(global-set-key (kbd "C-h n") 'cb/mc/mark-next-like-this)
 (global-set-key (kbd "C-h C-l") 'mc/edit-lines)
 
 ;;; Add autoloads for some functions before binding keys to them.
