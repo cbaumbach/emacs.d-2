@@ -7,6 +7,17 @@
   (setq w32-pass-apps-to-system nil)
   (setq w32-apps-modifier 'hyper))
 
+(defun cb/other-window () (interactive) (other-window 1))
+(defun cb/other-frame () (interactive) (other-frame 1))
+
+(global-set-key-with-transient-map
+ (kbd "C-x o") 'cb/other-window
+ ("o" 'cb/other-window))
+
+(global-set-key-with-transient-map
+ (kbd "C-x 5 o") 'cb/other-frame
+ ("o" 'cb/other-frame))
+
 ;;; Simplify debugging emacs lisp macros.
 (add-hook 'emacs-lisp-mode-hook
           #'(lambda () (local-set-key (kbd "M-n") 'pp-macroexpand-last-sexp)))
@@ -37,57 +48,10 @@ Example:
                  :filter ,(lambda (&optional ignored)
                             ,dispatch))))
 
-(defmacro repeatify-commands (&rest forms)
-  "Create a set of inter-communicating repeatable commands.
-
-Every form in FORMS has the following structure: (fn key [arg])
-where KEY, specified as a string, will be bound to the function
-FN.  If ARG is supplied, it will be passed as an additional
-argument to FN."
-  (let ((binds (mapcar #'(lambda (x)
-                           (cons (intern (concat "repeatified-" (symbol-name (car x))))
-                                 x))
-                       forms)))
-    (let ((keydefs (mapcar #'(lambda (x)
-                               `(define-key map (kbd ,(nth 2 x)) ',(nth 0 x)))
-                           binds)))
-      `(progn
-         ,@(mapcar #'(lambda (x)
-                       `(defun ,(nth 0 x) ()
-                          (interactive)
-                          ,(if (null (nth 3 x))
-                               `(,(nth 1 x))
-                             `(,(nth 1 x) ,(nth 3 x)))
-                          (set-temporary-overlay-map
-                           (let ((map (make-sparse-keymap)))
-                             ,@keydefs
-                             map))))
-                   binds)))))
-
-(defun cb/mc/mark-next-like-this ()
-  (interactive)
-  (mc/mark-next-like-this 1)
-  (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "n") #'cb/mc/mark-next-like-this)
-    (define-key map (kbd "s") #'mc/skip-to-next-like-this)
-    (define-key map (kbd "u") #'mc/unmark-next-like-this)
-    (set-transient-map map t)))
-
-(add-to-list 'mc/cmds-to-run-once 'cb/mc/mark-next-like-this)
-
-(global-set-key (kbd "C-h n") 'cb/mc/mark-next-like-this)
-(global-set-key (kbd "C-h C-l") 'mc/edit-lines)
-
 ;;; Add autoloads for some functions before binding keys to them.
 (autoload 'copy-from-above-command "misc" nil 'interactive)
 
 (global-set-key (kbd "M-x") 'ido-M-x)
-
-(repeatify-commands (other-window "o" 1))
-(global-set-key (kbd "C-x o") 'repeatified-other-window)
-
-(repeatify-commands (other-frame "o" 1))
-(global-set-key (kbd "C-x 5 o") 'repeatified-other-frame)
 
 ;;; Type M-= to expand, Meta - M-= to contract, M-0 M-= to reset.
 (global-set-key (kbd "M-=") 'er/expand-region)

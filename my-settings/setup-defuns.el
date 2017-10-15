@@ -122,4 +122,42 @@ argument exchange buffers of current and previous window."
      (widen)
      (eval-region (point-min) (point-max)))))
 
+;;; ==================================================================
+;;; Transient keymaps
+;;; ==================================================================
+
+(defmacro define-key-with-transient-map (map key fn &rest keydefs)
+  "Bind KEY to FN in MAP and extend FN to install a transient
+keymap with key bindings defined by KEYDEFS.  Every element of
+KEYDEFS is a two-element list.  The first element is a key, the
+second a command.  Neither FN nor commands in KEYDEFS are
+evaluated.
+
+Example:
+
+(define-key-with-transient-map
+  (current-global-map)
+  (kbd \"C-h n\") cb/mark-next-like-this
+  (\"n\" cb/mark-next-like-this)
+  (\"s\" mc/skip-to-next-like-this)
+  (\"u\" mc/unmark-next-like-this))"
+  (let ((fn-name (intern (concat (symbol-name (second fn)) "--with-transient-map"))))
+    `(progn
+       (defun ,fn-name ()
+         (interactive)
+         (funcall ,fn)
+         (set-transient-map (cb/create-keymap ,@keydefs) t))
+       (define-key ,map ,key ',fn-name))))
+
+(defmacro cb/create-keymap (&rest keydefs)
+  `(let ((map (make-sparse-keymap)))
+     ,@(mapcar #'(lambda (keydef)
+                   (let ((key (first keydef)) (def (second keydef)))
+                     `(define-key map ,key ,def)))
+               keydefs)
+     map))
+
+(defmacro global-set-key-with-transient-map (key fn &rest keydefs)
+  `(define-key-with-transient-map (current-global-map) ,key ,fn ,@keydefs))
+
 (provide 'setup-defuns)
