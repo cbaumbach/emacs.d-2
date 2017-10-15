@@ -11,6 +11,7 @@
 (require 'setup-appearance)
 (require 'setup-packages)
 (require 'setup-defuns)
+(require 'setup-deftest)
 
 ;;; General setup.
 (require 'setup-ack)
