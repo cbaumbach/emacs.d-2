@@ -122,6 +122,30 @@ argument exchange buffers of current and previous window."
      (widen)
      (eval-region (point-min) (point-max)))))
 
+(defmacro cb/define-context-key (keymap key dispatch)
+  "Define KEY in KEYMAP to execute according to DISPATCH.
+
+DISPATCH is a form that is evaluated and should return the
+command to be executed.
+
+If DISPATCH returns nil, then the command normally bound to KEY
+will be executed.
+
+Example:
+
+  (cb/define-context-key hs-minor-mode-map
+                         (kbd \"<C-tab>\")
+                         (cond
+                          ((not (hs-already-hidden-p))
+                           'hs-hide-block)
+                          ((hs-already-hidden-p)
+                           'hs-show-block)))
+"
+  `(define-key ,keymap ,key
+     `(menu-item "context-key" ignore
+                 :filter ,(lambda (&optional ignored)
+                            ,dispatch))))
+
 ;;; ==================================================================
 ;;; Transient keymaps
 ;;; ==================================================================

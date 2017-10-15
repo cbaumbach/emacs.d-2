@@ -24,30 +24,6 @@
 (add-hook 'lisp-interaction-mode-hook
           #'(lambda () (local-set-key (kbd "M-n") 'pp-macroexpand-last-sexp)))
 
-(defmacro cb/define-context-key (keymap key dispatch)
-  "Define KEY in KEYMAP to execute according to DISPATCH.
-
-DISPATCH is a form that is evaluated and should return the
-command to be executed.
-
-If DISPATCH returns nil, then the command normally bound to KEY
-will be executed.
-
-Example:
-
-  (cb/define-context-key hs-minor-mode-map
-                         (kbd \"<C-tab>\")
-                         (cond
-                          ((not (hs-already-hidden-p))
-                           'hs-hide-block)
-                          ((hs-already-hidden-p)
-                           'hs-show-block)))
-"
-  `(define-key ,keymap ,key
-     `(menu-item "context-key" ignore
-                 :filter ,(lambda (&optional ignored)
-                            ,dispatch))))
-
 ;;; Add autoloads for some functions before binding keys to them.
 (autoload 'copy-from-above-command "misc" nil 'interactive)
 
