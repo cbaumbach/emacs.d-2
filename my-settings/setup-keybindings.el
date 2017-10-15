@@ -18,12 +18,6 @@
  (kbd "C-x 5 o") 'cb/other-frame
  ("o" 'cb/other-frame))
 
-;;; Simplify debugging emacs lisp macros.
-(add-hook 'emacs-lisp-mode-hook
-          #'(lambda () (local-set-key (kbd "M-n") 'pp-macroexpand-last-sexp)))
-(add-hook 'lisp-interaction-mode-hook
-          #'(lambda () (local-set-key (kbd "M-n") 'pp-macroexpand-last-sexp)))
-
 ;;; Add autoloads for some functions before binding keys to them.
 (autoload 'copy-from-above-command "misc" nil 'interactive)
 
