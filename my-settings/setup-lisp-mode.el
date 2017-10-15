@@ -1,3 +1,9 @@
+(add-hook 'emacs-lisp-mode-hook
+          #'(lambda ()
+              (local-set-key (kbd "C-c C-z") 'ielm)
+              (local-set-key (kbd "C-c C-l") 'elisp-load-buffer)
+              (local-set-key (kbd "C-c C-m") 'macrostep-expand)))
+
 (let ((lisp-file (expand-file-name "~/.roswell/lisp/quicklisp/slime-helper.el")))
   (when (file-exists-p lisp-file)
     (load lisp-file)

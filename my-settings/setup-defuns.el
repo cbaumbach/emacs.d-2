@@ -114,4 +114,12 @@ argument exchange buffers of current and previous window."
               (beginning-of-line)
               (point))))))
 
+(defun elisp-load-buffer ()
+  "Load the emacs lisp code in the current buffer."
+  (interactive)
+  (save-excursion
+   (save-restriction
+     (widen)
+     (eval-region (point-min) (point-max)))))
+
 (provide 'setup-defuns)
