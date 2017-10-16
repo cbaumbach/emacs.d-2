@@ -140,9 +140,9 @@
               (c-set-style "personal")
               (setq c-auto-align-backslashes nil)
               (c-toggle-syntactic-indentation 1)
-              (c-toggle-electric-state 1)
-              (c-toggle-auto-newline 1)
-              (c-toggle-hungry-state 1)))
+              ; (c-toggle-auto-newline 1)
+              ; (c-toggle-hungry-state 1)
+              (c-toggle-electric-state 1)))
 
 ;;; Use // for comments in C code.
 (add-hook 'c-mode-hook
