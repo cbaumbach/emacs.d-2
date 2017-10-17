@@ -32,5 +32,6 @@
 (global-set-key (kbd "C-x 4 r") 'view-file-other-window)
 (global-set-key (kbd "<f9>") 'recompile)
 (define-key help-map "a" 'apropos)
+(global-set-key (kbd "M-SPC") 'cycle-spacing)
 
 (provide 'setup-keybindings)
