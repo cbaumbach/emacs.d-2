@@ -7,6 +7,4 @@
           (kill-buffer (current-buffer)))
       (find-file cheat-sheet-filename))))
 
-(global-set-key (kbd "C-h C-h") #'toggle-cheat-sheet)
-
 (provide 'setup-cheat-sheet)
