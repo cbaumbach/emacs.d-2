@@ -54,13 +54,4 @@
                             mode)))
         (setf result (cons mode-symbol result))))))
 
-;;; "C-h g" was previously mapped to describe-gnu-project which is an
-;;; interesting read in itself.
-(global-unset-key (kbd "C-h g"))
-(global-set-key (kbd "C-h g a") 'major-mode-ring-add)
-(global-set-key (kbd "C-h g r") 'major-mode-ring-remove)
-(global-set-key (kbd "C-h g p") 'major-mode-ring-previous)
-(global-set-key (kbd "C-h g n") 'major-mode-ring-next)
-(global-set-key (kbd "C-h g s") 'major-mode-ring-show)
-
 (provide 'setup-major-mode-ring)

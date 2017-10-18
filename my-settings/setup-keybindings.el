@@ -25,6 +25,18 @@
 (global-set-key (kbd "s-C-f") 'insert-file-name)
 (global-set-key-with-transient-map (kbd "H-h") 'mark-paragraph ("h" 'mark-paragraph))
 
+(global-set-key (kbd "s-g a") 'major-mode-ring-add)
+(global-set-key (kbd "s-g r") 'major-mode-ring-remove)
+(global-set-key (kbd "s-g p") 'major-mode-ring-previous)
+(global-set-key (kbd "s-g n") 'major-mode-ring-next)
+(global-set-key (kbd "s-g s") 'major-mode-ring-show)
+
+(global-set-key-with-transient-map
+ (kbd "s-n") 'cb/mark-next-like-this
+ ("n" 'cb/mark-next-like-this)
+ ("s" 'cb/skip-next-like-this)
+ ("u" 'mc/unmark-next-like-this))
+
 (defun cb/other-window () (interactive) (other-window 1))
 (defun cb/other-frame () (interactive) (other-frame 1))
 
