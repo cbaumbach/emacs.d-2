@@ -1,12 +1,3 @@
-;;; Detect super and hyper when running on windows.
-(when (string-equal system-type "windows-nt")
-  (setq w32-pass-lwindow-to-system nil)
-  (setq w32-lwindow-modifier 'super)
-  (setq w32-pass-rwindow-to-system nil)
-  (setq w32-rwindow-modifier 'super)
-  (setq w32-pass-apps-to-system nil)
-  (setq w32-apps-modifier 'hyper))
-
 ;;; Emulate control, meta, super, and hyper keys and thereby make
 ;;; keychords available that normally only work in GUI emacs but not
 ;;; in a terminal.  A keychord like M-( can be now be emulated by
