@@ -21,4 +21,7 @@
 ;;; Use two spaces after a colon.
 (setq colon-double-space t)
 
+;;; Treat whitespace literally during search.
+(setq search-whitespace-regexp nil)
+
 (provide 'setup-whitespace)
