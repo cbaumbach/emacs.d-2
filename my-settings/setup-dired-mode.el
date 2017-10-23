@@ -19,6 +19,7 @@
 (define-key global-map "\C-x\C-j" 'dired-jump)
 (define-key global-map "\C-x4\C-j" 'dired-jump-other-window)
 
-(setq-default dired-listing-switches "-alh")
+;;; Use "C-u s" to change switches and reload dired buffer
+(setq-default dired-listing-switches "-lh")
 
 (provide 'setup-dired-mode)
