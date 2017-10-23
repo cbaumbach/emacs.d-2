@@ -20,6 +20,7 @@
 ;;; Replace some clobbered key bindings.
 (global-set-key (kbd "s-h") 'help-command)
 (global-set-key (kbd "s-C-h") 'toggle-cheat-sheet)
+(global-set-key (kbd "s-C-SPC") 'copy-from-above-command)
 (global-set-key (kbd "s-C-@") 'copy-from-above-command)
 (global-set-key (kbd "s-C-s") 'swap-buffers)
 (global-set-key (kbd "s-C-f") 'insert-file-name)
