@@ -59,4 +59,6 @@
 ;;; Default input method
 (setq default-input-method 'german-postfix)
 
+(set-language-environment "UTF-8")
+
 (provide 'setup-misc)
