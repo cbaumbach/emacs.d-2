@@ -26,7 +26,6 @@
 (require 'setup-ace-jump-mode)
 (require 'setup-bookmarks)
 (require 'setup-ccmode)
-(require 'setup-dash)
 (require 'setup-dired-mode)
 (require 'setup-ediff)
 ;; (require 'setup-ess-mode)
