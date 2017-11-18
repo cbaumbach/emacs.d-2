@@ -2,10 +2,8 @@
   '((("gnu" . "http://elpa.gnu.org/packages/"))
     (("melpa-stable" . "http://stable.melpa.org/packages/")
      ace-jump-mode
-     dash
      diminish
      expand-region
-     git-commit
      haskell-mode
      magit
      multiple-cursors
