@@ -4,6 +4,7 @@
      ace-jump-mode
      dash
      dash-functional
+     diminish
      expand-region
      git-commit
      haskell-mode
