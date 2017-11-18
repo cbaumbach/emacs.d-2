@@ -41,11 +41,18 @@
 (global-set-key (kbd "C-h C-h") 'toggle-cheat-sheet)
 (global-set-key (kbd "C-h C-s") 'swap-buffers)
 (global-set-key (kbd "C-h C-f") 'insert-file-name)
+
+;;; Major mode ring
 (global-unset-key (kbd "C-h g"))
 (global-set-key (kbd "C-h g a") 'major-mode-ring-add)
 (global-set-key (kbd "C-h g r") 'major-mode-ring-remove)
 (global-set-key (kbd "C-h g p") 'major-mode-ring-previous)
 (global-set-key (kbd "C-h g n") 'major-mode-ring-next)
 (global-set-key (kbd "C-h g s") 'major-mode-ring-show)
+
+;;; Toggling
+(global-unset-key (kbd "C-h t"))
+(global-set-key (kbd "C-h t t") 'toggle-indent-tabs-mode)
+(global-set-key (kbd "C-h t w") 'whitespace-mode)
 
 (provide 'setup-keybindings)
