@@ -60,4 +60,6 @@
   (interactive "fFile: ")
   (setenv "GIT_SSH_COMMAND" (concat "ssh -i " private-key-file)))
 
+(add-hook 'magit-mode-hook #'(lambda () (whitespace-mode -1)))
+
 (provide 'setup-magit)
