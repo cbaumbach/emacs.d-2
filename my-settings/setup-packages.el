@@ -3,7 +3,6 @@
     (("melpa-stable" . "http://stable.melpa.org/packages/")
      ace-jump-mode
      dash
-     dash-functional
      diminish
      expand-region
      git-commit
