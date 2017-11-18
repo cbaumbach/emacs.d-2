@@ -14,6 +14,8 @@
  ("s" 'cb/skip-next-like-this)
  ("u" 'mc/unmark-next-like-this))
 
+(add-to-list 'mc/cmds-to-run-once 'cb/mark-next-like-this--with-transient-map)
+
 (defun cb/other-window () (interactive) (other-window 1))
 (defun cb/other-frame () (interactive) (other-frame 1))
 
@@ -40,6 +42,7 @@
 (global-set-key (kbd "M-SPC") 'cycle-spacing)
 (global-set-key (kbd "C-h C-s") 'swap-buffers)
 (global-set-key (kbd "C-h C-f") 'insert-file-name)
+(global-set-key (kbd "C-h C-l") 'mc/edit-lines)
 
 ;;; Major mode ring
 (global-unset-key (kbd "C-h g"))
