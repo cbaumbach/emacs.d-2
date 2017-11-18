@@ -23,7 +23,6 @@
 
 (eval-after-load "paredit"
   '(progn
-     (diminish 'paredit-mode)
      (define-key paredit-mode-map (kbd "M-)") 'paredit-wrap-round)
      (define-key paredit-mode-map (kbd "M-s") 'paredit-splice-sexp)
      (define-key paredit-mode-map (kbd "M-r") 'paredit-raise-sexp)

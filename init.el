@@ -23,7 +23,6 @@
 (require 'setup-whitespace)
 
 ;;; Setup modes.
-(require 'diminish)
 (require 'setup-ace-jump-mode)
 (require 'setup-bookmarks)
 (require 'setup-ccmode)
@@ -48,6 +47,7 @@
 ;;; Depends on other things being loaded.
 (require 'setup-fonts)
 (require 'setup-keybindings)
+(require 'setup-mode-line)
 
 ;;; Load aliases.
 (let ((alias-file "~/.emacs.d/aliases.el"))
