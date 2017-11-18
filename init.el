@@ -15,10 +15,10 @@
 
 ;;; General setup.
 (require 'setup-ack)
-(require 'setup-cheat-sheet)
 (require 'setup-indentation)
 (require 'setup-major-mode-ring)
 (require 'setup-misc)
+(require 'setup-notes)
 (require 'setup-scrolling)
 (require 'setup-whitespace)
 

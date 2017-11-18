@@ -38,7 +38,6 @@
 (global-set-key (kbd "<f9>") 'recompile)
 (define-key help-map "a" 'apropos)
 (global-set-key (kbd "M-SPC") 'cycle-spacing)
-(global-set-key (kbd "C-h C-h") 'toggle-cheat-sheet)
 (global-set-key (kbd "C-h C-s") 'swap-buffers)
 (global-set-key (kbd "C-h C-f") 'insert-file-name)
 
@@ -52,6 +51,7 @@
 
 ;;; Toggling
 (global-unset-key (kbd "C-h t"))
+(global-set-key (kbd "C-h t n") 'cb/toggle-notes)
 (global-set-key (kbd "C-h t t") 'toggle-indent-tabs-mode)
 (global-set-key (kbd "C-h t w") 'whitespace-mode)
 
