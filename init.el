@@ -39,7 +39,6 @@
 (require 'setup-paredit-mode)
 (require 'setup-proced-mode)
 (require 'setup-python-mode)
-(require 'setup-tex-modes)
 (require 'setup-undo-tree-mode)
 
 ;;; Depends on other things being loaded.
