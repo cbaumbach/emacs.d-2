@@ -41,8 +41,3 @@
 (require 'setup-fonts)
 (require 'setup-keybindings)
 (require 'setup-mode-line)
-
-;;; Load aliases.
-(let ((alias-file "~/.emacs.d/aliases.el"))
-  (when (file-readable-p alias-file)
-    (load alias-file)))
