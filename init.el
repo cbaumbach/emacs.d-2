@@ -18,7 +18,6 @@
 (require 'setup-major-mode-ring)
 (require 'setup-misc)
 (require 'setup-notes)
-(require 'setup-scrolling)
 (require 'setup-whitespace)
 
 ;;; Setup modes.
@@ -28,9 +27,7 @@
 (require 'setup-dired-mode)
 (require 'setup-ediff)
 ;; (require 'setup-ess-mode)
-(require 'setup-expand-region-mode)
 (require 'setup-haskell-mode)
-(require 'setup-html-mode)
 (require 'setup-ido-mode)
 (require 'setup-lisp-mode)
 (require 'setup-magit)
@@ -39,7 +36,6 @@
 (require 'setup-paredit-mode)
 (require 'setup-proced-mode)
 (require 'setup-python-mode)
-(require 'setup-undo-tree-mode)
 
 ;;; Depends on other things being loaded.
 (require 'setup-fonts)
