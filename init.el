@@ -15,7 +15,6 @@
 
 ;;; General setup.
 (require 'setup-ack)
-(require 'setup-indentation)
 (require 'setup-major-mode-ring)
 (require 'setup-misc)
 (require 'setup-notes)
