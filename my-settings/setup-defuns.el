@@ -184,4 +184,29 @@ Example:
 (defmacro global-set-key-with-transient-map (key fn &rest keydefs)
   `(define-key-with-transient-map (current-global-map) ,key ,fn ,@keydefs))
 
+;;; When advising OLDFUN with FUNCTION, where FUNCTION is interactive,
+;;; the composed function inherits the interactive specification of
+;;; FUNCTION.  Conceptually, the composed function for an :after
+;;; advice is equivalent to the following lambda:
+;;;
+;;; (lambda (&rest r)
+;;;   (prog1 (apply OLDFUN r)
+;;;     (apply FUNCTION r)))
+;;;
+;;; In particular, both OLDFUN and FUNCTION will be called with the
+;;; same arguments.  If the advised (composed) function is called
+;;; interactively and FUNCTION's interactive specification implies a
+;;; different number of arguments than OLDFUN we will get an error of
+;;; type wrong-number-of-arguments.
+;;;
+;;; (defun foo () (interactive))
+;;; (defun bar (&optional arg) (interactive "P"))
+;;; (advice-add 'foo :after 'bar)
+;;; (foo)                      ; works
+;;; (call-interactively 'foo)  ; wrong-number-of-arguments error
+;;;
+;;; Therefore in order to advice a function that takes no arguments
+;;; using a function that takes one optional argument we have to wrap
+;;; the call to the latter function in a lambda taking no arguments.
+
 (provide 'setup-defuns)

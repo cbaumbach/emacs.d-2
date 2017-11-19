@@ -15,6 +15,10 @@
 
 (cb/global-whitespace-mode)
 
+(defun cb/disable-whitespace-mode ()
+  (interactive)
+  (whitespace-mode -1))
+
 (defun toggle-indent-tabs-mode ()
   (interactive)
   (setq indent-tabs-mode (not indent-tabs-mode))
