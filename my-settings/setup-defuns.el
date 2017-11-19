@@ -1,4 +1,4 @@
-(defun eval-and-replace ()
+(defun cb/eval-and-replace ()
   "Eval and replace last s-expression."
   (interactive)
   (backward-kill-sexp)
@@ -8,9 +8,9 @@
     (error (message "Invalid expression.")
        (insert (current-kill 0)))))
 
-(autoload 'zap-up-to-char "misc" nil 'interactive)
+(autoload 'zap-up-to-char "misc" nil t)
 
-(defun zap-to-or-up-to-char (arg char)
+(defun cb/zap-to-or-up-to-char (arg char)
   "Without prefix arg delete up to CHAR, otherwise delete up to
 and including CHAR."
   (interactive
@@ -21,39 +21,25 @@ and including CHAR."
                                 'face '(:foreground "cyan")))))
   (funcall (if arg #'zap-to-char #'zap-up-to-char) 1 char))
 
-(defun switch-to-buffer-list-other-window ()
+(defun cb/switch-to-buffer-list-other-window ()
   "Switch to buffer list in other window."
   (interactive)
   (list-buffers)
   (switch-to-buffer-other-window "*Buffer List*" nil))
 
-(defun this-file-name ()
-  "Insert current filename after stripping directory."
-  (interactive)
-  (let ((path (buffer-file-name)))
-    (insert (substring path (1+ (position ?/ path :from-end t))))))
-
-(defun copy-file-name-to-register (file-name c)
+(defun cb/copy-file-name-to-register (file-name c)
   "Copy file name to register."
   (interactive "fFile name: \ncCopy to register:")
-  (set-register c (cons 'file file-name)))
+  (set-register c file-name))
 
-(defun delete-or-kill-region (start end)
+(defun cb/delete-or-kill-region (start end)
   "With prefix arg same as delete-region, otherwise kill-region."
   (interactive "r")
   (if current-prefix-arg
       (delete-region start end)
     (kill-region start end)))
 
-(defmacro match-any (&rest patterns)
-  "Make a predicate saying whether its argument matches any of
-the regexps in PATTERNS."
-  `(lambda (s)
-     (let ((case-fold-search nil))
-       (or ,@(mapcar #'(lambda (x) `(string-match ,x s))
-                     patterns)))))
-
-(defun what-face (pos)
+(defun cb/what-face (pos)
   "Show name of face under cursor."
   (interactive "d")
   (let ((face (or (get-char-property (point) 'read-face-name)
@@ -61,7 +47,7 @@ the regexps in PATTERNS."
     (cond (face (message "Face: %s" face))
           (t (message "No face at %d" pos)))))
 
-(defun swap-buffers (&optional arg)
+(defun cb/swap-buffers (&optional arg)
   "Exchange buffers of current and next window.  With prefix
 argument exchange buffers of current and previous window."
   (interactive "P")
@@ -74,7 +60,7 @@ argument exchange buffers of current and previous window."
     (set-window-buffer this-win other-buffer))
   (other-window (if arg -1 1)))
 
-(defun beginning-of-dired-buffer ()
+(defun cb/beginning-of-dired-buffer ()
   "Move to first file or directory in dired buffer skipping `.' and `..'."
   (interactive)
   (beginning-of-buffer)
@@ -84,19 +70,19 @@ argument exchange buffers of current and previous window."
   (if (not (bound-and-true-p dired-omit-mode))
       (dired-next-line 2)))             ; step over . and .. lines
 
-(defun end-of-dired-buffer ()
+(defun cb/end-of-dired-buffer ()
   "Move to last file or directory in dired buffer."
   (interactive)
   (end-of-buffer)
   (dired-previous-line 1))
 
-(defun insert-file-name ()
+(defun cb/insert-file-name ()
   "Prompt for a filename and insert it at point."
   (interactive)
   (let (read-file-name-function read-file-name-default)
     (insert (read-file-name "File name: "))))
 
-(defun copy-1-from-above ()
+(defun cb/copy-1-from-above ()
   "Copy next character from the previous nonblank line."
   (interactive)
   (copy-from-above-command 1))
@@ -114,7 +100,7 @@ argument exchange buffers of current and previous window."
               (beginning-of-line)
               (point))))))
 
-(defun elisp-load-buffer ()
+(defun cb/elisp-load-buffer ()
   "Load the emacs lisp code in the current buffer."
   (interactive)
   (save-excursion
@@ -150,7 +136,7 @@ Example:
 ;;; Transient keymaps
 ;;; ==================================================================
 
-(defmacro define-key-with-transient-map (map key fn &rest keydefs)
+(defmacro cb/define-key-with-transient-map (map key fn &rest keydefs)
   "Bind KEY to FN in MAP and extend FN to install a transient
 keymap with key bindings defined by KEYDEFS.  Every element of
 KEYDEFS is a two-element list.  The first element is a key, the
@@ -181,8 +167,8 @@ Example:
                keydefs)
      map))
 
-(defmacro global-set-key-with-transient-map (key fn &rest keydefs)
-  `(define-key-with-transient-map (current-global-map) ,key ,fn ,@keydefs))
+(defmacro cb/global-set-key-with-transient-map (key fn &rest keydefs)
+  `(cb/define-key-with-transient-map (current-global-map) ,key ,fn ,@keydefs))
 
 ;;; When advising OLDFUN with FUNCTION, where FUNCTION is interactive,
 ;;; the composed function inherits the interactive specification of

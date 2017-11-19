@@ -19,7 +19,7 @@
   (interactive)
   (whitespace-mode -1))
 
-(defun toggle-indent-tabs-mode ()
+(defun cb/toggle-indent-tabs-mode ()
   (interactive)
   (setq indent-tabs-mode (not indent-tabs-mode))
   (message "Literal tabs %s"

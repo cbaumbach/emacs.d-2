@@ -15,7 +15,7 @@
 (setq ess-history-file nil)
 
 ;;; Set up a K&R alike indentation style.
-(defun ess-indent-k&r ()
+(defun cb/ess-indent-k&r ()
   (setq ess-indent-offset 4)
   (setq ess-offset-arguments 'prev-line)
   (setq ess-offset-arguments-newline 'prev-line)
@@ -29,7 +29,7 @@
   (setq ess-indent-prev-call-chains t)
   (setq ess-indent-with-fancy-comments nil))
 
-(add-hook 'ess-mode-hook #'ess-indent-k&r)
+(add-hook 'ess-mode-hook #'cb/ess-indent-k&r)
 
 ;;; Disable font-lock-mode in inferior-ess-mode.
 (remove-hook 'inferior-ess-mode-hook #'turn-on-font-lock)

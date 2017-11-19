@@ -7,7 +7,7 @@
 ;;; Enable flex matching.
 (setq ido-enable-flex-matching 1)
 
-(defun ido-M-x ()
+(defun cb/ido-M-x ()
   "Use ido-like selection for execute-extended-command."
   (interactive)
   (call-interactively

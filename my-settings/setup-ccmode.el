@@ -30,7 +30,7 @@
      (namespace-close before after)
      (namespace-open after)
      (statement-case-open after)
-     (substatement-open . c-braces-no-newlines-before-nonblanks))
+     (substatement-open . cb/c-braces-no-newlines-before-nonblanks))
     (c-hanging-colons-alist
      (case-label after)
      (label after)
@@ -124,7 +124,7 @@
      (topmost-intro . 0)
      (topmost-intro-cont . 0))))
 
-(defun c-braces-no-newlines-before-nonblanks (syntax pos)
+(defun cb/c-braces-no-newlines-before-nonblanks (syntax pos)
   (save-excursion
     (if (and (= (c-last-command-char) ?\{)
              (zerop (forward-line 1))

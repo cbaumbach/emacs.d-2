@@ -8,7 +8,7 @@
 (define-key local-function-key-map (kbd "C-h C-t m") 'event-apply-meta-modifier)
 (define-key local-function-key-map (kbd "C-h C-t s") 'event-apply-super-modifier)
 
-(global-set-key-with-transient-map
+(cb/global-set-key-with-transient-map
  (kbd "C-h n") 'cb/mark-next-like-this
  ("n" 'cb/mark-next-like-this)
  ("s" 'cb/skip-next-like-this)
@@ -19,29 +19,29 @@
 (defun cb/other-window () (interactive) (other-window 1))
 (defun cb/other-frame () (interactive) (other-frame 1))
 
-(global-set-key-with-transient-map (kbd "C-x o") 'cb/other-window ("o" 'cb/other-window))
-(global-set-key-with-transient-map (kbd "C-x 5 o") 'cb/other-frame ("o" 'cb/other-frame))
+(cb/global-set-key-with-transient-map (kbd "C-x o") 'cb/other-window ("o" 'cb/other-window))
+(cb/global-set-key-with-transient-map (kbd "C-x 5 o") 'cb/other-frame ("o" 'cb/other-frame))
 
 (global-set-key (kbd "M-=") 'er/expand-region) ; M-= expand, Meta - M-= contract, M-0 M-= reset
-(global-set-key (kbd "M-x") 'ido-M-x)
+(global-set-key (kbd "M-x") 'cb/ido-M-x)
 (global-set-key (kbd "C-c C-SPC") 'ace-jump-mode)
 (global-set-key (kbd "<f5>") 'slime-selector)
 (global-set-key (kbd "M-%") 'query-replace-regexp)
-(global-set-key (kbd "C-x C-b") 'switch-to-buffer-list-other-window)
+(global-set-key (kbd "C-x C-b") 'cb/switch-to-buffer-list-other-window)
 (global-set-key (kbd "C-x ra") 'append-to-register)
-(global-set-key (kbd "C-x rF") 'copy-file-name-to-register)
-(global-set-key (kbd "C-w") 'delete-or-kill-region)
+(global-set-key (kbd "C-x rF") 'cb/copy-file-name-to-register)
+(global-set-key (kbd "C-w") 'cb/delete-or-kill-region)
 (autoload 'copy-from-above-command "misc" nil t)
 (global-set-key (kbd "C-h C-SPC") 'copy-from-above-command)
-(global-set-key (kbd "C-M-y") 'copy-1-from-above)
-(global-set-key (kbd "M-z") 'zap-to-or-up-to-char)
+(global-set-key (kbd "C-M-y") 'cb/copy-1-from-above)
+(global-set-key (kbd "M-z") 'cb/zap-to-or-up-to-char)
 (global-set-key (kbd "C-x C-r") 'view-file)
 (global-set-key (kbd "C-x 4 r") 'view-file-other-window)
 (global-set-key (kbd "<f9>") 'recompile)
 (define-key help-map "a" 'apropos)
 (global-set-key (kbd "M-SPC") 'cycle-spacing)
-(global-set-key (kbd "C-h C-s") 'swap-buffers)
-(global-set-key (kbd "C-h C-f") 'insert-file-name)
+(global-set-key (kbd "C-h C-s") 'cb/swap-buffers)
+(global-set-key (kbd "C-h C-f") 'cb/insert-file-name)
 (global-set-key (kbd "C-h C-l") 'mc/edit-lines)
 (autoload 'dired-jump "dired-x" nil t)
 (global-set-key (kbd "C-x C-j") 'dired-jump)
@@ -50,16 +50,16 @@
 
 ;;; Major mode ring
 (global-unset-key (kbd "C-h g"))
-(global-set-key (kbd "C-h g a") 'major-mode-ring-add)
-(global-set-key (kbd "C-h g r") 'major-mode-ring-remove)
-(global-set-key (kbd "C-h g p") 'major-mode-ring-previous)
-(global-set-key (kbd "C-h g n") 'major-mode-ring-next)
-(global-set-key (kbd "C-h g s") 'major-mode-ring-show)
+(global-set-key (kbd "C-h g a") 'cb/major-mode-ring-add)
+(global-set-key (kbd "C-h g r") 'cb/major-mode-ring-remove)
+(global-set-key (kbd "C-h g p") 'cb/major-mode-ring-previous)
+(global-set-key (kbd "C-h g n") 'cb/major-mode-ring-next)
+(global-set-key (kbd "C-h g s") 'cb/major-mode-ring-show)
 
 ;;; Toggling
 (global-unset-key (kbd "C-h t"))
 (global-set-key (kbd "C-h t n") 'cb/toggle-notes)
-(global-set-key (kbd "C-h t t") 'toggle-indent-tabs-mode)
+(global-set-key (kbd "C-h t t") 'cb/toggle-indent-tabs-mode)
 (global-set-key (kbd "C-h t w") 'whitespace-mode)
 
 (provide 'setup-keybindings)

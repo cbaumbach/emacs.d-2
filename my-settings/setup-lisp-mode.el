@@ -1,6 +1,6 @@
 (defun cb/bind-elisp-keys ()
   (local-set-key (kbd "C-c C-z") 'ielm)
-  (local-set-key (kbd "C-c C-l") 'elisp-load-buffer)
+  (local-set-key (kbd "C-c C-l") 'cb/elisp-load-buffer)
   (local-set-key (kbd "C-c C-m") 'macrostep-expand))
 
 (add-hook 'emacs-lisp-mode-hook #'cb/bind-elisp-keys)

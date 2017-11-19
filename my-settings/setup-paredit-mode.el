@@ -39,9 +39,9 @@
      (define-key paredit-mode-map (kbd "C-M-d") 'paredit-forward-down)
      (define-key paredit-mode-map (kbd "C-M-p") 'paredit-backward-down)
      (define-key paredit-mode-map (kbd "C-M-n") 'paredit-forward-up)
-     (define-key paredit-mode-map (kbd "DEL") 'paredit-backward-delete-or-delete-region)))
+     (define-key paredit-mode-map (kbd "DEL") 'cb/paredit-backward-delete-or-delete-region)))
 
-(defun paredit-backward-delete-or-delete-region (&optional n)
+(defun cb/paredit-backward-delete-or-delete-region (&optional n)
   (interactive "P")
   (if (use-region-p)
       (delete-region (region-beginning) (region-end))

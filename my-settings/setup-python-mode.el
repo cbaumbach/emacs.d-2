@@ -2,11 +2,11 @@
 
 (setq python-shell-interpreter "python3")
 
-(defun python-set-virtualenv (path)
+(defun cb/python-set-virtualenv (path)
   (interactive "DDirectory: ")
   (setq python-shell-virtualenv-path path))
 
-(defun python-unset-virtualenv ()
+(defun cb/python-unset-virtualenv ()
   (interactive)
   (setq python-shell-virtualenv-path nil))
 
