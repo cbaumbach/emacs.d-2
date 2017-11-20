@@ -40,7 +40,6 @@
 (global-set-key (kbd "<f9>") 'recompile)
 (define-key help-map "a" 'apropos)
 (global-set-key (kbd "M-SPC") 'cycle-spacing)
-(global-set-key (kbd "C-h C-s") 'cb/swap-buffers)
 (global-set-key (kbd "C-h C-f") 'cb/insert-file-name)
 (global-set-key (kbd "C-h C-l") 'mc/edit-lines)
 (autoload 'dired-jump "dired-x" nil t)
@@ -58,10 +57,11 @@
 
 ;;; Toggling
 (global-unset-key (kbd "C-h t"))
+(global-set-key (kbd "C-h t SPC") 'whitespace-mode)
 (global-set-key (kbd "C-h t f") 'auto-fill-mode)
 (global-set-key (kbd "C-h t n") 'cb/toggle-notes)
 (global-set-key (kbd "C-h t s") 'cb/toggle-split-orientation)
 (global-set-key (kbd "C-h t t") 'cb/toggle-indent-tabs-mode)
-(global-set-key (kbd "C-h t w") 'whitespace-mode)
+(global-set-key (kbd "C-h t w") 'cb/exchange-windows)
 
 (provide 'setup-keybindings)

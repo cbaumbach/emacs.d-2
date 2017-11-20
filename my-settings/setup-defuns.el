@@ -47,19 +47,6 @@ and including CHAR."
     (cond (face (message "Face: %s" face))
           (t (message "No face at %d" pos)))))
 
-(defun cb/swap-buffers (&optional arg)
-  "Exchange buffers of current and next window.  With prefix
-argument exchange buffers of current and previous window."
-  (interactive "P")
-  (let* ((this-win (selected-window))
-         (find-other-window (if arg #'previous-window #'next-window))
-         (other-win (funcall find-other-window))
-         (this-buffer (window-buffer this-win))
-         (other-buffer (window-buffer other-win)))
-    (set-window-buffer other-win this-buffer)
-    (set-window-buffer this-win other-buffer))
-  (other-window (if arg -1 1)))
-
 (defun cb/beginning-of-dired-buffer ()
   "Move to first file or directory in dired buffer skipping `.' and `..'."
   (interactive)
@@ -144,6 +131,18 @@ Example:
         (split-window-horizontally)
       (split-window-vertically))
     (switch-to-buffer buffer)))
+
+(defun cb/exchange-windows ()
+  (interactive)
+  (when (not (= 2 (count-windows)))
+    (error "This only works if there are exactly 2 windows"))
+  (let* ((this-window (selected-window))
+         (other-window (next-window))
+         (this-buffer (window-buffer this-window))
+         (other-buffer (window-buffer other-window)))
+    (set-window-buffer other-window this-buffer)
+    (set-window-buffer this-window other-buffer))
+  (other-window 1))
 
 ;;; ==================================================================
 ;;; Transient keymaps
