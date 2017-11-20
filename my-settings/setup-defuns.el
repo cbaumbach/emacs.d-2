@@ -119,12 +119,17 @@ Example:
                  :filter ,(lambda (&optional ignored)
                             ,dispatch))))
 
+(defun cb/find-split-orientation ()
+  "Given a frame with two windows return the symbol VERTICAL if
+the windows are stacked vertically, otherwise return HORIZONTAL."
+  (if (= (window-total-width) (frame-total-cols))
+      'vertical 'horizontal))
+
 (defun cb/toggle-split-orientation ()
   (interactive)
   (when (not (= 2 (count-windows)))
     (error "This only works if there are exactly 2 windows"))
-  (let ((split (if (= (window-total-width) (frame-total-cols))
-                   'vertical 'horizontal))
+  (let ((split (cb/find-split-orientation))
         (buffer (window-buffer)))
     (delete-window)
     (if (eq split 'vertical)
