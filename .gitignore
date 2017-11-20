@@ -5,3 +5,5 @@
 /bookmarks
 /.org-id-locations
 /url/
+/server/
+/custom.el
