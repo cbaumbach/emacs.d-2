@@ -132,6 +132,19 @@ Example:
                  :filter ,(lambda (&optional ignored)
                             ,dispatch))))
 
+(defun cb/toggle-split-orientation ()
+  (interactive)
+  (when (not (= 2 (count-windows)))
+    (error "This only works if there are exactly 2 windows"))
+  (let ((split (if (= (window-total-width) (frame-total-cols))
+                   'vertical 'horizontal))
+        (buffer (window-buffer)))
+    (delete-window)
+    (if (eq split 'vertical)
+        (split-window-horizontally)
+      (split-window-vertically))
+    (switch-to-buffer buffer)))
+
 ;;; ==================================================================
 ;;; Transient keymaps
 ;;; ==================================================================
