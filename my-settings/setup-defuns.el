@@ -126,6 +126,8 @@ the windows are stacked vertically, otherwise return HORIZONTAL."
       'vertical 'horizontal))
 
 (defun cb/toggle-split-orientation ()
+  "Given a frame with two windows change the orientation of the
+window split from vertical to horizontal and vice versa."
   (interactive)
   (when (not (= 2 (count-windows)))
     (error "This only works if there are exactly 2 windows"))
@@ -138,6 +140,8 @@ the windows are stacked vertically, otherwise return HORIZONTAL."
     (switch-to-buffer buffer)))
 
 (defun cb/exchange-windows ()
+  "Given a frame with two windows display the contents of one
+window in the other window and vice versa."
   (interactive)
   (when (not (= 2 (count-windows)))
     (error "This only works if there are exactly 2 windows"))
