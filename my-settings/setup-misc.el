@@ -6,8 +6,9 @@
 (setq-default comint-input-ignoredups t)
 (setq set-mark-command-repeat-pop t)
 (setq comment-empty-lines t)
-(setq default-input-method 'german-postfix)
 (set-language-environment "UTF-8")
+;; Must come after call to set-language-environment!
+(setq default-input-method 'german-postfix)
 (require 'undo-tree)
 (global-undo-tree-mode 1)
 (require 'expand-region)
