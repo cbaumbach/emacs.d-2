@@ -120,7 +120,7 @@ below.  If ARG is nil the rest of the line is inserted."
 
 (defun cb/char-digit-p (char)
   "Is CHAR one of the digits 0, 1, ..., 9?"
-  (and (>= char ?0) (<= char ?9)))
+  (<= ?0 char ?9))
 
 (defun cb/strip-prefix-arg (keys)
   "Strip prefix arguments, i.e., C-u possibly followed by a
