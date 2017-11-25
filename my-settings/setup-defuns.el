@@ -168,10 +168,10 @@ Example:
 
 (define-key-with-transient-map
   (current-global-map)
-  (kbd \"C-h n\") cb/mark-next-like-this
-  (\"n\" cb/mark-next-like-this)
-  (\"s\" mc/skip-to-next-like-this)
-  (\"u\" mc/unmark-next-like-this))"
+  (kbd \"C-h n\") 'cb/mark-next-like-this
+  (\"n\" 'cb/mark-next-like-this)
+  (\"s\" 'mc/skip-to-next-like-this)
+  (\"u\" 'mc/unmark-next-like-this))"
   (let ((fn-name (intern (concat (symbol-name (second fn)) "--with-transient-map"))))
     `(progn
        (defun ,fn-name ()
