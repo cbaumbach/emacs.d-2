@@ -69,10 +69,89 @@ and including CHAR."
   (let (read-file-name-function read-file-name-default)
     (insert (read-file-name "File name: "))))
 
-(defun cb/copy-1-from-above ()
-  "Copy next character from the previous nonblank line."
+;;; Modified version of copy-from-above-command that can also copy
+;;; from below.
+(defun cb/copy-from-around (from &optional arg)
+  "Insert ARG characters from the next nonblank line above or
+below at point.  If FROM is the symbol ABOVE, characters are
+taken from the line above, else if FROM is BELOW from the line
+below.  If ARG is nil the rest of the line is inserted."
+  (let ((cc (current-column))
+        n
+        (string ""))
+    (save-excursion
+      (cond ((eq from 'above)
+             (beginning-of-line)
+             (backward-char 1)
+             (skip-chars-backward "\ \t\n"))
+            ((eq from 'below)
+             (end-of-line)
+             (forward-char 1)
+             (skip-chars-forward "\ \t\n"))
+            (t (error "FROM must be one of ABOVE or BELOW")))
+      (move-to-column cc)
+      ;; Default is enough to copy the whole rest of the line.
+      (setq n (if arg (prefix-numeric-value arg) (point-max)))
+      ;; If current column winds up in middle of a tab,
+      ;; copy appropriate number of "virtual" space chars.
+      (if (< cc (current-column))
+          (if (= (preceding-char) ?\t)
+              (progn
+                (setq string (make-string (min n (- (current-column) cc)) ?\s))
+                (setq n (- n (min n (- (current-column) cc)))))
+            ;; In middle of ctl char => copy that whole char.
+            (backward-char 1)))
+      (setq string (concat string
+                           (buffer-substring
+                            (point)
+                            (min (line-end-position)
+                                 (+ n (point)))))))
+    (insert string)))
+
+(defun cb/copy-char-from-above ()
+  "Copy character from next nonblank line above."
   (interactive)
-  (copy-from-above-command 1))
+  (cb/copy-from-around 'above 1))
+
+(defun cb/copy-char-from-below ()
+  "Copy character from next nonblank line below."
+  (interactive)
+  (cb/copy-from-around 'below 1))
+
+(defun cb/char-digit-p (char)
+  "Is CHAR one of the digits 0, 1, ..., 9?"
+  (and (>= char ?0) (<= char ?9)))
+
+(defun cb/strip-prefix-arg (keys)
+  "Strip prefix arguments, i.e., C-u possibly followed by a
+number, from the start of KEYS, where KEYS is a string or a
+vector."
+  (if (eq (aref keys 0) ?)
+      (let ((pos 1))
+        (while (cb/char-digit-p (aref keys pos))
+          (setq pos (1+ pos)))
+        (substring keys pos))
+    keys))
+
+(defun cb/copy-char-from-around (&optional arg)
+  "Without prefix argument copy a character from the next
+nonblank line above.  With prefix argument copy from below.
+Typing the same key sequence again (not including the prefix
+argument) will copy the next character."
+  (interactive "P")
+  (if arg
+      (cb/copy-char-from-below)
+    (cb/copy-char-from-above))
+  (let* ((keys (cb/strip-prefix-arg (this-command-keys)))
+         (map (if arg
+                  (cb/create-keymap (keys 'cb/copy-char-from-below))
+                (cb/create-keymap (keys 'cb/copy-char-from-above)))))
+    (set-transient-map map t)))
+
+(defun cb/copy-line-from-around (&optional arg)
+  "If ARG is nil copy characters from line above else from line below."
+  (interactive "P")
+  (cb/copy-from-around (if arg 'below 'above)))
 
 (defun cb/inside-a-string-p ()
   "Returns non-nil if point is inside a string, otherwise nil."
