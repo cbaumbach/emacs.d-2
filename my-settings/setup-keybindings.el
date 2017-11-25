@@ -41,10 +41,6 @@
 (global-set-key (kbd "M-SPC") 'cycle-spacing)
 (global-set-key (kbd "C-h C-f") 'cb/insert-file-name)
 (global-set-key (kbd "C-h C-l") 'mc/edit-lines)
-(autoload 'dired-jump "dired-x" nil t)
-(global-set-key (kbd "C-x C-j") 'dired-jump)
-(autoload 'dired-jump-other-window "dired-x" nil t)
-(global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
 
 ;;; Major mode ring
 (global-unset-key (kbd "C-h g"))
