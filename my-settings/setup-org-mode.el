@@ -53,22 +53,6 @@
 
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 
-;;; Functions for using top-level trees as slides.
-(defun cb/org-next-slide ()
-  (interactive)
-  (cb/org-change-slide 1))
-
-(defun cb/org-previous-slide ()
-  (interactive)
-  (cb/org-change-slide -1))
-
-(defun cb/org-change-slide (arg)
-  (widen)
-  (if (> arg 0)
-      (outline-next-heading)
-    (outline-previous-heading))
-  (org-narrow-to-subtree))
-
 (defun cb/org-toggle-skip-confirm-babel-evaluate ()
   "Toggle flag to bypass the need for confirmation when
 evaluating source blocks."
@@ -82,9 +66,7 @@ evaluating source blocks."
 (add-hook 'org-mode-hook
           #'(lambda ()
               (setq-local org-skip-confirm-babel-evaluate nil)
-              (local-set-key (kbd "C-c M-s") 'cb/org-toggle-skip-confirm-babel-evaluate)
-              (local-set-key (kbd "<down>") 'org-next-slide)
-              (local-set-key (kbd "<up>") 'org-previous-slide)))
+              (local-set-key (kbd "C-c M-s") 'cb/org-toggle-skip-confirm-babel-evaluate)))
 
 (setq org-confirm-babel-evaluate
       #'(lambda (lang body)
