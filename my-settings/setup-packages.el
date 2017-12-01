@@ -43,6 +43,8 @@
 
 (require 'package)
 (package-initialize)
+(dolist (archive (mapcar #'car cb/list-of-packages))
+  (add-to-list 'package-archives archive t))
 (cb/install-custom-packages cb/list-of-packages)
 
 (provide 'setup-packages)
