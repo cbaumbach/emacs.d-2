@@ -19,6 +19,8 @@
   (interactive)
   (whitespace-mode -1))
 
+(add-hook 'help-mode-hook #'cb/disable-whitespace-mode)
+
 (defun cb/toggle-indent-tabs-mode ()
   (interactive)
   (setq indent-tabs-mode (not indent-tabs-mode))
