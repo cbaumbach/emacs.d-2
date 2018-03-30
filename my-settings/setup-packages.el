@@ -1,5 +1,6 @@
 (defvar cb/list-of-packages
-  '((("gnu" . "http://elpa.gnu.org/packages/"))
+  '((("gnu" . "http://elpa.gnu.org/packages/")
+     undo-tree)
     (("melpa-stable" . "http://stable.melpa.org/packages/")
      ace-jump-mode
      diminish
@@ -10,7 +11,7 @@
      paredit)
     (("melpa" . "http://melpa.org/packages/")
      ;; ess
-     undo-tree)))
+     )))
 
 (defun cb/install-custom-packages (archives-and-packages)
   (mapcar #'(lambda (pkgs)
