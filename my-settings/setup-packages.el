@@ -5,6 +5,7 @@
      ace-jump-mode
      diminish
      expand-region
+     go-mode
      haskell-mode
      magit
      multiple-cursors
