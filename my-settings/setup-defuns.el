@@ -66,7 +66,7 @@ and including CHAR."
 (defun cb/insert-file-name ()
   "Prompt for a filename and insert it at point."
   (interactive)
-  (let (read-file-name-function read-file-name-default)
+  (let ((read-file-name-function #'read-file-name-default))
     (insert (read-file-name "File name: "))))
 
 ;;; Modified version of copy-from-above-command that can also copy
