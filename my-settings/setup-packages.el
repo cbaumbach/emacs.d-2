@@ -1,5 +1,6 @@
 (defvar cb/list-of-packages
   '((("gnu" . "http://elpa.gnu.org/packages/")
+     let-alist
      undo-tree)
     (("melpa-stable" . "http://stable.melpa.org/packages/")
      ace-jump-mode
