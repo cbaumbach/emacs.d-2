@@ -1,4 +1,7 @@
 (require 'dired-x)
+
+(setq dired-recursive-deletes 'always)
+(setq dired-recursive-copies 'always)
 (setq dired-guess-shell-gnutar "tar")
 
 (add-hook 'dired-mode-hook
