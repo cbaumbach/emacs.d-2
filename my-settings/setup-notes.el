@@ -6,9 +6,7 @@
 (defun cb/toggle-notes ()
   (interactive)
   (if (string-equal (buffer-file-name) (expand-file-name cb/notes-filename))
-      (if (buffer-modified-p)
-          (switch-to-buffer (other-buffer))
-        (kill-buffer (current-buffer)))
+      (switch-to-buffer (other-buffer))
     (find-file cb/notes-filename)))
 
 (provide 'setup-notes)
