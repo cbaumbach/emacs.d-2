@@ -29,4 +29,8 @@ Otherwise the django shell would hang waiting for input from stdin."
     (call-interactively 'run-python)
     (cd pwd)))
 
+(add-hook 'inferior-python-mode-hook
+          #'(lambda ()
+              (toggle-truncate-lines -1)))
+
 (provide 'setup-python-mode)
