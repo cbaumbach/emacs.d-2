@@ -55,6 +55,7 @@
 (global-set-key (kbd "C-h t f") 'auto-fill-mode)
 (global-set-key (kbd "C-h t n") 'cb/toggle-notes)
 (global-set-key (kbd "C-h t s") 'cb/toggle-split-orientation)
+(global-set-key (kbd "C-h t t") 'toggle-truncate-lines)
 (global-set-key (kbd "C-h t SPC") 'whitespace-mode)
 (global-set-key (kbd "C-h t TAB") 'cb/toggle-indent-tabs-mode)
 (global-set-key (kbd "C-h t w") 'cb/exchange-windows)
