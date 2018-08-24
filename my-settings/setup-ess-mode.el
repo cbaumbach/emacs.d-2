@@ -10,7 +10,7 @@
 
 (setq ess-eval-visibly 'nowait)
 
-(setq ess-S-assign "_")                 ; disable smart "_" key
+(setq ess-smart-S-assign-key nil)       ; disable "smart" _ key
 
 (setq ess-history-file nil)
 
