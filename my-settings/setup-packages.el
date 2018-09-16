@@ -1,53 +1,48 @@
-(defvar cb/list-of-packages
-  '((("gnu" . "http://elpa.gnu.org/packages/")
-     let-alist
-     undo-tree)
-    (("melpa-stable" . "http://stable.melpa.org/packages/")
-     ace-jump-mode
-     diminish
-     expand-region
-     go-mode
-     haskell-mode
-     magit
-     multiple-cursors
-     paredit)
-    (("melpa" . "http://melpa.org/packages/")
-     ;; ess
-     )))
+(defun cb/install-packages (archives-and-packages)
+  "Install packages from specific archives.
 
-(defun cb/install-custom-packages (archives-and-packages)
-  (mapcar #'(lambda (pkgs)
-              (cb/install-packages-from-archive (cdr pkgs) (car pkgs)))
-          archives-and-packages)
-  (delete-other-windows))
-
-(defun cb/install-packages-from-archive (packages archive)
-  (let ((packages-to-install (cb/filter (lambda (package)
-                                          (not (package-installed-p package)))
-                                        packages)))
-    (when packages-to-install
-      (cb/delete-package-archives)
-      (setq package-archives (list archive))
-      (package-refresh-contents)
-      (dolist (pkg packages-to-install)
-        (package-install pkg)))))
-
-(defun cb/filter (predicate seq)
-  (let (result)
-    (dolist (element seq)
-      (when (funcall predicate element)
-        (setq result (add-to-list 'result element))))
-    result))
-
-(defun cb/delete-package-archives ()
-  (let ((archive-directory (concat user-emacs-directory "elpa/archives")))
-    (when (file-exists-p archive-directory)
-      (delete-directory archive-directory t))))
+If archive Y is listed after archive X and a package listed under
+archive Y depends on a package that is not already installed, the
+needed package will be searched in archives X and Y with the more
+recent version of the package winning.  Therefore, in order to
+force installation of a package from a specific archive, the
+package should be listed under the given archive and archives
+should be sorted by stability.  In other words, archives that
+tend to host more recent versions of packages should come after
+archives that host older versions of packages."
+  (setq package-archives nil)
+  (dolist (items archives-and-packages)
+    (let ((archive (car items))
+          (packages (cdr items))
+          packages-to-install
+          contents-refreshed)
+      (add-to-list 'package-archives archive)
+      (dolist (pkg packages)
+        (when (not (package-installed-p pkg))
+          (add-to-list 'packages-to-install pkg)))
+      (when packages-to-install
+        (package-refresh-contents)
+        (dolist (pkg packages-to-install)
+          (package-install pkg))))))
 
 (require 'package)
 (package-initialize)
-(dolist (archive (mapcar #'car cb/list-of-packages))
-  (add-to-list 'package-archives archive t))
-(cb/install-custom-packages cb/list-of-packages)
+
+(let ((list-of-packages
+       '((("gnu" . "http://elpa.gnu.org/packages/")
+          undo-tree)
+         (("melpa-stable" . "http://stable.melpa.org/packages/")
+          ace-jump-mode
+          diminish
+          expand-region
+          go-mode
+          haskell-mode
+          magit
+          multiple-cursors
+          paredit)
+         (("melpa" . "http://melpa.org/packages/")
+          ;; ess
+          ))))
+  (cb/install-packages list-of-packages))
 
 (provide 'setup-packages)
