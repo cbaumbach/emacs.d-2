@@ -36,7 +36,6 @@ archives that host older versions of packages."
           diminish
           expand-region
           go-mode
-          haskell-mode
           magit
           multiple-cursors
           paredit)

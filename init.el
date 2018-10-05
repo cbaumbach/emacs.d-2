@@ -30,7 +30,6 @@
 (require 'setup-ediff)
 ;; (require 'setup-ess-mode)
 (require 'setup-go-mode)
-(require 'setup-haskell-mode)
 (require 'setup-ido-mode)
 (require 'setup-lisp-mode)
 (require 'setup-magit)
