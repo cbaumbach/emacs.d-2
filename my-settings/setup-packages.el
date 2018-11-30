@@ -28,20 +28,25 @@ archives that host older versions of packages."
 (require 'package)
 (package-initialize)
 
-(let ((list-of-packages
-       '((("gnu" . "http://elpa.gnu.org/packages/")
-          undo-tree)
-         (("melpa-stable" . "http://stable.melpa.org/packages/")
-          ace-jump-mode
-          diminish
-          expand-region
-          go-mode
-          magit
-          multiple-cursors
-          paredit)
-         (("melpa" . "http://melpa.org/packages/")
-          ;; ess
-          ))))
-  (cb/install-packages list-of-packages))
+(let ((packages-gnu
+       '(("gnu" . "http://elpa.gnu.org/packages/")
+         undo-tree))
+      (packages-melpa-stable
+       '(("melpa-stable" . "http://stable.melpa.org/packages/")
+         ace-jump-mode
+         diminish
+         expand-region
+         go-mode
+         multiple-cursors
+         paredit))
+      (packages-melpa
+       '(("melpa" . "http://melpa.org/packages/")
+         ;; ess
+         )))
+  (when (>= emacs-major-version 25)
+    (add-to-list 'packages-melpa-stable 'magit t))
+  (cb/install-packages (list packages-gnu
+                             packages-melpa-stable
+                             packages-melpa)))
 
 (provide 'setup-packages)
