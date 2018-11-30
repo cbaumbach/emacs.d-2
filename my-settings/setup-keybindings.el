@@ -52,6 +52,7 @@
 
 ;;; Toggling
 (global-unset-key (kbd "C-h t"))
+(global-set-key (kbd "C-h t c") 'cb/toggle-case-fold-search)
 (global-set-key (kbd "C-h t e") 'electric-indent-mode)
 (global-set-key (kbd "C-h t f") 'auto-fill-mode)
 (global-set-key (kbd "C-h t n") 'cb/toggle-notes)

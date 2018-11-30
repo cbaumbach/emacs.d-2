@@ -232,6 +232,11 @@ window in the other window and vice versa."
     (set-window-buffer this-window other-buffer))
   (other-window 1))
 
+(defun cb/toggle-case-fold-search ()
+  (interactive)
+  (setf case-fold-search (not case-fold-search))
+  (message (concat "case-fold-search " (if case-fold-search "on" "off"))))
+
 ;;; ==================================================================
 ;;; Transient keymaps
 ;;; ==================================================================
