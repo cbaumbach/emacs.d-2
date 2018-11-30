@@ -36,6 +36,7 @@
 (global-set-key (kbd "M-z") 'cb/zap-to-or-up-to-char)
 (global-set-key (kbd "C-x C-r") 'view-file)
 (global-set-key (kbd "C-x 4 r") 'view-file-other-window)
+(global-set-key (kbd "<f6>") 'revert-buffer)
 (global-set-key (kbd "<f9>") 'recompile)
 (define-key help-map "a" 'apropos)
 (global-set-key (kbd "M-SPC") 'cycle-spacing)
