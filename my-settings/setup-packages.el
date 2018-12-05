@@ -14,8 +14,7 @@ archives that host older versions of packages."
   (dolist (items archives-and-packages)
     (let ((archive (car items))
           (packages (cdr items))
-          packages-to-install
-          contents-refreshed)
+          packages-to-install)
       (add-to-list 'package-archives archive)
       (dolist (pkg packages)
         (when (not (package-installed-p pkg))
