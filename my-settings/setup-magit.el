@@ -17,6 +17,4 @@
 (set-face-background 'magit-diff-added "black")
 (set-face-background 'magit-diff-context "black")
 
-(add-hook 'magit-mode-hook 'cb/disable-whitespace-mode)
-
 (provide 'setup-magit)
