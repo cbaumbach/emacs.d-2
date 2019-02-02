@@ -5,21 +5,14 @@
 (setq whitespace-style '(empty tab-mark trailing))
 (setq whitespace-action '(auto-cleanup))
 
-;;; We can't use global-whitespace-mode because it always shows "WS"
-;;; in the mode line even after whitespace (but not global whitespace)
-;;; mode was disabled in a buffer.  By using our own globalized minor
-;;; mode the mode line will contain (lowercase) "ws" if, and only if,
-;;; whitespace mode is enabled.
-(define-globalized-minor-mode cb/global-whitespace-mode
-  whitespace-mode whitespace-mode)
+(define-globalized-minor-mode
+  cb/global-whitespace-mode
+  whitespace-mode
+  (lambda ()
+    (when (not (memq major-mode '(help-mode)))
+      (whitespace-mode 1))))
 
 (cb/global-whitespace-mode)
-
-(defun cb/disable-whitespace-mode ()
-  (interactive)
-  (whitespace-mode -1))
-
-(add-hook 'help-mode-hook #'cb/disable-whitespace-mode)
 
 (defun cb/toggle-indent-tabs-mode ()
   (interactive)
