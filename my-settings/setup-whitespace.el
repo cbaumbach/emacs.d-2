@@ -2,7 +2,8 @@
 (setq search-whitespace-regexp nil) ; treat whitespace literally during search
 (setq-default indent-tabs-mode nil)
 (setq-default require-final-newline t)
-(setq whitespace-style '(empty tab-mark trailing))
+(setq-default whitespace-style '(empty tab-mark trailing))
+(make-variable-buffer-local 'whitespace-style)
 (setq whitespace-action '(auto-cleanup))
 
 (define-globalized-minor-mode
