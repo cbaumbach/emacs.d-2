@@ -22,6 +22,7 @@
 (cb/global-set-key-with-transient-map (kbd "C-x o") 'cb/other-window ("o" 'cb/other-window))
 (cb/global-set-key-with-transient-map (kbd "C-x 5 o") 'cb/other-frame ("o" 'cb/other-frame))
 
+(global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "M-=") 'er/expand-region) ; M-= expand, Meta - M-= contract, M-0 M-= reset
 (global-set-key (kbd "M-x") 'cb/ido-M-x)
 (global-set-key (kbd "C-c C-SPC") 'ace-jump-mode)
