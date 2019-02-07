@@ -12,7 +12,8 @@
   cb/global-whitespace-mode
   whitespace-mode
   (lambda ()
-    (when (not (memq major-mode '(help-mode)))
+    (when (and (not (memq major-mode '(help-mode)))
+               (not (string-equal (substring (symbol-name major-mode) 0 5) "magit")))
       (whitespace-mode 1))))
 
 (cb/global-whitespace-mode)
