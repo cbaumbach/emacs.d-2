@@ -31,6 +31,7 @@
 ;; (require 'setup-ess-mode)
 (require 'setup-go-mode)
 (require 'setup-ido-mode)
+(require 'setup-js-mode)
 (require 'setup-lisp-mode)
 (ignore-errors (require 'setup-magit))
 (require 'setup-multiple-cursors-mode)
