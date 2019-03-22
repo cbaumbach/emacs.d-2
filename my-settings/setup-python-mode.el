@@ -13,14 +13,17 @@
 (defun cb/run-django-shell (venv manage.py)
   "Run django's python shell in inferior-python-mode.
 
-I had to comment out the following lines in django's \"shell\"
-management command found in django/core/management/commands/shell.py.
+If this command seems to hang, open
 
-    if sys.platform != 'win32' and select.select([sys.stdin], [], [], 0)[0]:
+    venv/lib/python3.6/site-packages/django/core/management/commands/shell.py
+
+and make sure that the following passage occurs:
+
+    if sys.platform != 'win32' and not sys.stdin.isatty() and select.select([sys.stdin], [], [], 0)[0]:
         exec(sys.stdin.read())
         return
 
-Otherwise the django shell would hang waiting for input from stdin."
+Older django versions omitted the \"and not sys.stdin.isatty()\" part."
   (interactive "DVirtual environment: \nfPath to manage.py: ")
   (cb/python-set-virtualenv venv)
   (setq python-shell-interpreter-args (concat manage.py " shell"))
