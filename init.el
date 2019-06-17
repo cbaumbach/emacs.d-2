@@ -30,6 +30,7 @@
 (require 'setup-ediff)
 ;; (require 'setup-ess-mode)
 (require 'setup-go-mode)
+(require 'setup-html-mode)
 (require 'setup-ido-mode)
 (require 'setup-js-mode)
 (require 'setup-lisp-mode)
