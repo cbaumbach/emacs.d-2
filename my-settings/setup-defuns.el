@@ -241,39 +241,40 @@ window in the other window and vice versa."
 ;;; Transient keymaps
 ;;; ==================================================================
 
-(defmacro cb/define-key-with-transient-map (map key fn &rest keydefs)
-  "Bind KEY to FN in MAP and extend FN to install a transient
-keymap with key bindings defined by KEYDEFS.  Every element of
-KEYDEFS is a two-element list.  The first element is a key, the
-second a command.  Neither FN nor commands in KEYDEFS are
-evaluated.
+(defmacro cb/define-key-with-transient-map (map key function &rest keydefs)
+  "Bind KEY to FUNCTION in MAP and extend FUNCTION to install a
+transient keymap with key bindings defined by KEYDEFS.  Every
+element of KEYDEFS is a two-element list.  The first element is a
+key, the second a command.  Note that unlike the commands in
+KEYDEFS, FUNCTION is not evaluated.
 
 Example:
 
 (define-key-with-transient-map
   (current-global-map)
-  (kbd \"C-h n\") 'cb/mark-next-like-this
+  (kbd \"C-h n\") cb/mark-next-like-this
   (\"n\" 'cb/mark-next-like-this)
   (\"s\" 'mc/skip-to-next-like-this)
   (\"u\" 'mc/unmark-next-like-this))"
-  (let ((fn-name (intern (concat (symbol-name (second fn)) "--with-transient-map"))))
+  (let ((function-name (intern (concat (symbol-name function) "--with-transient-map"))))
     `(progn
-       (defun ,fn-name ()
+       (defun ,function-name ()
          (interactive)
-         (funcall ,fn)
+         (funcall ',function)
          (set-transient-map (cb/create-keymap ,@keydefs) t))
-       (define-key ,map ,key ',fn-name))))
+       (define-key ,map ,key ',function-name))))
 
 (defmacro cb/create-keymap (&rest keydefs)
+  "Return a keymap based on KEYDEFS which is a list of pairs
+whose first member is a key represented as a string and whose
+second member is a command."
   `(let ((map (make-sparse-keymap)))
-     ,@(mapcar #'(lambda (keydef)
-                   (let ((key (first keydef)) (def (second keydef)))
-                     `(define-key map ,key ,def)))
+     ,@(mapcar #'(lambda (pair) `(define-key map ,(first pair) ,(second pair)))
                keydefs)
      map))
 
-(defmacro cb/global-set-key-with-transient-map (key fn &rest keydefs)
-  `(cb/define-key-with-transient-map (current-global-map) ,key ,fn ,@keydefs))
+(defmacro cb/global-set-key-with-transient-map (key function &rest keydefs)
+  `(cb/define-key-with-transient-map (current-global-map) ,key ,function ,@keydefs))
 
 ;;; When advising OLDFUN with FUNCTION, where FUNCTION is interactive,
 ;;; the composed function inherits the interactive specification of

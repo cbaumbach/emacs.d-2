@@ -9,7 +9,7 @@
 (define-key local-function-key-map (kbd "C-h C-t s") 'event-apply-super-modifier)
 
 (cb/global-set-key-with-transient-map
- (kbd "C-h n") 'cb/mark-next-like-this
+ (kbd "C-h n") cb/mark-next-like-this
  ("n" 'cb/mark-next-like-this)
  ("s" 'cb/skip-next-like-this)
  ("u" 'mc/unmark-next-like-this))
@@ -19,8 +19,8 @@
 (defun cb/other-window () (interactive) (other-window 1))
 (defun cb/other-frame () (interactive) (other-frame 1))
 
-(cb/global-set-key-with-transient-map (kbd "C-x o") 'cb/other-window ("o" 'cb/other-window))
-(cb/global-set-key-with-transient-map (kbd "C-x 5 o") 'cb/other-frame ("o" 'cb/other-frame))
+(cb/global-set-key-with-transient-map (kbd "C-x o") cb/other-window ("o" 'cb/other-window))
+(cb/global-set-key-with-transient-map (kbd "C-x 5 o") cb/other-frame ("o" 'cb/other-frame))
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "M-=") 'er/expand-region) ; M-= expand, Meta - M-= contract, M-0 M-= reset
