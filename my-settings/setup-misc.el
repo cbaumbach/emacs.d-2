@@ -12,6 +12,7 @@
 (require 'undo-tree)
 (global-undo-tree-mode 1)
 (require 'expand-region)
+(setq browse-url-browser-function 'eww-browse-url)
 ;; Never recenter point when it moves off-screen
 (setq scroll-conservatively (1+ 100))
 ;; Preserve point's screen position when scrolling by full screens

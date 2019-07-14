@@ -26,8 +26,8 @@
 (global-set-key (kbd "M-=") 'er/expand-region) ; M-= expand, Meta - M-= contract, M-0 M-= reset
 (global-set-key (kbd "M-x") 'cb/ido-M-x)
 (global-set-key (kbd "C-c C-SPC") 'ace-jump-mode)
-(global-set-key (kbd "<f5>") 'slime-selector)
 (global-set-key (kbd "M-%") 'query-replace-regexp)
+(global-set-key (kbd "C-c C-s") 'slime-selector)
 (global-set-key (kbd "C-x C-b") 'cb/switch-to-buffer-list-other-window)
 (global-set-key (kbd "C-x ra") 'append-to-register)
 (global-set-key (kbd "C-x rF") 'cb/copy-file-name-to-register)

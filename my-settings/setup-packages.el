@@ -37,7 +37,8 @@ archives that host older versions of packages."
          expand-region
          go-mode
          multiple-cursors
-         paredit))
+         paredit
+         slime))
       (packages-melpa
        '(("melpa" . "http://melpa.org/packages/")
          ;; ess
