@@ -6,7 +6,7 @@
 (defun cb/toggle-notes ()
   (interactive)
   (if (string-equal (buffer-file-name) (expand-file-name cb/notes-filename))
-      (switch-to-buffer (other-buffer))
+      (quit-window)
     (find-file cb/notes-filename)))
 
 (provide 'setup-notes)
