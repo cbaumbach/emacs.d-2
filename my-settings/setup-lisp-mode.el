@@ -10,10 +10,6 @@
       lisp-indent-function 'common-lisp-indent-function
       slime-net-coding-system 'utf-8-unix)
 
-(add-hook 'lisp-mode-hook
-          (lambda ()
-            (local-set-key (kbd "TAB") 'slime-fuzzy-complete-symbol)))
-
 (add-hook 'slime-repl-mode-hook
           (lambda ()
             (enable-paredit-mode)
