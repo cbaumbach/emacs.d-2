@@ -1,12 +1,8 @@
-;; Emulate keys via event-apply-XXX-modifier, e.g. a keychord like M-(
-;; can be emulated by typing C-h C-t m (.
-(global-unset-key (kbd "C-h C-t"))
-(define-key local-function-key-map (kbd "C-h C-t S") 'event-apply-shift-modifier)
-(define-key local-function-key-map (kbd "C-h C-t a") 'event-apply-alt-modifier)
-(define-key local-function-key-map (kbd "C-h C-t c") 'event-apply-control-modifier)
-(define-key local-function-key-map (kbd "C-h C-t h") 'event-apply-hyper-modifier)
-(define-key local-function-key-map (kbd "C-h C-t m") 'event-apply-meta-modifier)
-(define-key local-function-key-map (kbd "C-h C-t s") 'event-apply-super-modifier)
+;; Emulate super and hyper keys
+(global-unset-key (kbd "C-t"))
+(global-unset-key (kbd "C-z"))
+(define-key local-function-key-map (kbd "C-t") 'event-apply-super-modifier)
+(define-key local-function-key-map (kbd "C-z") 'event-apply-hyper-modifier)
 
 (cb/global-set-key-with-transient-map
  (kbd "C-h n") cb/mark-next-like-this
