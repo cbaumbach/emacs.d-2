@@ -14,6 +14,8 @@
 (require 'setup-packages)
 (require 'setup-defuns)
 (require 'setup-deftest)
+(when (eq system-type 'windows-nt)
+  (require 'setup-ms-windows))
 
 ;;; General setup.
 (require 'setup-ack)
