@@ -9,7 +9,8 @@
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
 (setq-default truncate-lines t)
-(setq visible-bell t)
+(setq visible-bell nil
+      ring-bell-function 'ignore)
 (global-font-lock-mode t)
 (show-paren-mode t)
 (setq fill-column 70)
