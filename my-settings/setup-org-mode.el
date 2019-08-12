@@ -2,9 +2,9 @@
 
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((emacs-lisp . t)
+ `((emacs-lisp . t)
    (R . t)
-   (sh . t)))
+   (,(if (>= emacs-major-version 26) 'shell 'sh) . t)))
 
 ;;; Don't hardcode css style inline, use css selectors instead.
 (setq org-html-htmlize-output-type 'css)
