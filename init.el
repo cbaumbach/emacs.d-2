@@ -14,8 +14,10 @@
 (require 'setup-packages)
 (require 'setup-defuns)
 (require 'setup-deftest)
-(when (eq system-type 'windows-nt)
-  (require 'setup-ms-windows))
+(cond ((eq system-type 'windows-nt)
+       (require 'setup-ms-windows))
+      ((eq system-type 'darwin)
+       (require 'setup-mac-os)))
 
 ;;; General setup.
 (require 'setup-ack)
