@@ -8,6 +8,7 @@
 ;;; faces will not have their default red/green foreground with light
 ;;; red/green background color but will have a white foreground with
 ;;; purple/teal background.
-(add-hook 'magit-mode-hook (lambda () (load-theme cb/color-theme t)) t)
+(add-hook 'magit-status-mode-hook
+          (lambda () (load-theme cb/color-theme t)) t)
 
 (provide 'setup-magit)
