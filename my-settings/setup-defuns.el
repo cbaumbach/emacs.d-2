@@ -237,6 +237,14 @@ window in the other window and vice versa."
   (setf case-fold-search (not case-fold-search))
   (message (concat "case-fold-search " (if case-fold-search "on" "off"))))
 
+(defun cb/move-beginning-of-line-or-buffer (arg)
+  (interactive "P")
+  (if arg (beginning-of-buffer) (move-beginning-of-line nil)))
+
+(defun cb/move-end-of-line-or-buffer (arg)
+  (interactive "P")
+  (if arg (end-of-buffer) (move-end-of-line nil)))
+
 ;;; ==================================================================
 ;;; Transient keymaps
 ;;; ==================================================================

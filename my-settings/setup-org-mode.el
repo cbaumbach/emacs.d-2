@@ -66,7 +66,9 @@ evaluating source blocks."
 (add-hook 'org-mode-hook
           #'(lambda ()
               (setq-local org-skip-confirm-babel-evaluate nil)
-              (local-set-key (kbd "C-c M-s") 'cb/org-toggle-skip-confirm-babel-evaluate)))
+              (local-set-key (kbd "C-c M-s") 'cb/org-toggle-skip-confirm-babel-evaluate)
+              (local-set-key (kbd "C-a") 'cb/move-beginning-of-line-or-buffer)
+              (local-set-key (kbd "C-e") 'cb/move-end-of-line-or-buffer)))
 
 (setq org-confirm-babel-evaluate
       #'(lambda (lang body)
