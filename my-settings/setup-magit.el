@@ -2,19 +2,12 @@
 
 (setq magit-auto-revert-mode nil)
 
-;;; The default colors for displaying changes are much too flashy.
-;;; Change colors for current chunk (= chunk containing point).
-(set-face-foreground 'magit-diff-removed-highlight "brightred")
-(set-face-background 'magit-diff-removed-highlight "black")
-(set-face-foreground 'magit-diff-added-highlight "brightgreen")
-(set-face-background 'magit-diff-added-highlight "black")
-(set-face-background 'magit-diff-context-highlight "black")
-(set-face-background 'magit-diff-hunk-region "brightblack")
-;;; Change colors for other chunks.
-(set-face-foreground 'magit-diff-removed "brightred")
-(set-face-background 'magit-diff-removed "black")
-(set-face-foreground 'magit-diff-added "brightgreen")
-(set-face-background 'magit-diff-added "black")
-(set-face-background 'magit-diff-context "black")
+;;; For some unknown reason the dracula theme does not apply fully to
+;;; the magit-status buffer unless I reload it.  Without reloading,
+;;; the magit-diff-removed-highlight and magit-diff-added-highlight
+;;; faces will not have their default red/green foreground with light
+;;; red/green background color but will have a white foreground with
+;;; purple/teal background.
+(add-hook 'magit-mode-hook (lambda () (load-theme cb/color-theme t)) t)
 
 (provide 'setup-magit)

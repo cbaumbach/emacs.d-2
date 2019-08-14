@@ -41,6 +41,7 @@ archives that host older versions of packages."
          slime))
       (packages-melpa
        '(("melpa" . "http://melpa.org/packages/")
+         dracula-theme
          ;; ess
          )))
   (when (>= emacs-major-version 25)

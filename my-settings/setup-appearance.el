@@ -1,3 +1,5 @@
+(setq cb/color-theme 'dracula)
+(add-hook 'after-init-hook (lambda () (load-theme cb/color-theme t)))
 (setq inhibit-default-init t)
 (when (display-graphic-p)
   (add-to-list 'default-frame-alist '(foreground-color . "white"))
