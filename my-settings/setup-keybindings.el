@@ -16,7 +16,7 @@
 (defun cb/other-frame () (interactive) (other-frame 1))
 
 (cb/global-set-key-with-transient-map (kbd "C-x o") cb/other-window ("o" 'cb/other-window))
-(cb/global-set-key-with-transient-map (kbd "C-x 5 o") cb/other-frame ("o" 'cb/other-frame))
+(cb/global-set-key-with-transient-map (kbd "s-o") cb/other-frame ("o" 'cb/other-frame))
 
 (global-set-key (kbd "C-s-t") 'transpose-chars)
 (global-set-key (kbd "C-a") 'cb/move-beginning-of-line-or-buffer)
