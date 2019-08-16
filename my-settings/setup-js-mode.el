@@ -11,6 +11,7 @@
           (lambda ()
             (when buffer-file-name
               (set (make-local-variable 'compile-command)
-                   (concat "jslint " (shell-quote-argument (file-name-nondirectory buffer-file-name)))))))
+                   (concat "jslint " (shell-quote-argument (file-name-nondirectory buffer-file-name)))))
+            (modify-syntax-entry ?. "-")))  ; treat . like space
 
 (provide 'setup-js-mode)
