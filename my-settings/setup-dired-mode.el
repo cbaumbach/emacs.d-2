@@ -7,6 +7,7 @@
 (add-hook 'dired-mode-hook
           #'(lambda ()
               (dired-hide-details-mode 1)
+              (local-unset-key (kbd "C-t")) ; unshadow global binding
               (local-set-key (kbd "M-<") 'cb/beginning-of-dired-buffer)
               (local-set-key (kbd "M->") 'cb/end-of-dired-buffer)))
 
