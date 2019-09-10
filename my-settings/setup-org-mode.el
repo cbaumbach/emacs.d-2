@@ -15,6 +15,8 @@
 ;;; Use relative path names when inserting links.
 (setq org-link-file-path-type 'relative)
 
+(setq org-edit-src-content-indentation 0)
+
 ;;; Add dynamically expanding table of contents in upper right corner.
 (setq org-html-head "\
 <style type=\"text/css\">
