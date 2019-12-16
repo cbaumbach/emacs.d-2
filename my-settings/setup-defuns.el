@@ -21,6 +21,12 @@ and including CHAR."
                                 'face '(:foreground "cyan")))))
   (funcall (if arg #'zap-to-char #'zap-up-to-char) 1 char))
 
+(defun cb/sort-lines (reverse beg end)
+  "Same as sort-lines but always folds case."
+  (interactive "P\nr")
+  (let ((sort-fold-case t))
+    (sort-lines reverse beg end)))
+
 (defun cb/switch-to-buffer-list-other-window ()
   "Switch to buffer list in other window."
   (interactive)
