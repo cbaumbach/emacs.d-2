@@ -45,6 +45,17 @@ and including CHAR."
       (delete-region start end)
     (kill-region start end)))
 
+(defun cb/insert-file-contents (arg filename beg end)
+  "Insert file contents from byte BEG up to, but not including,
+byte END.  With prefix argument, insert file contents literally."
+  (interactive
+   (list current-prefix-arg
+         (read-file-name "File name: " nil nil t)
+         (read-number "From byte: " 0)
+         (read-number "Up to byte: " 0)))
+  (funcall (if arg #'insert-file-contents-literally #'insert-file-contents)
+           filename nil beg end))
+
 (defun cb/what-face (pos)
   "Show name of face under cursor."
   (interactive "d")
