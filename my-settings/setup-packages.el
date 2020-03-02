@@ -36,6 +36,7 @@ archives that host older versions of packages."
          diminish
          expand-region
          go-mode
+         markdown-mode
          multiple-cursors
          paredit
          slime))
